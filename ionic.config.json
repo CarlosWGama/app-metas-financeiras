@@ -1,0 +1,7 @@
+{
+  "name": "minhas-metas-financeiras",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
