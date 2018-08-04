@@ -1,0 +1,44 @@
+<ion-content padding>
+
+  <div text-center>
+    <img src="../../assets/imgs/money_icon2.png" id="icon"/>
+    <h1 id="title">Minhas Metas Financeiras</h1>
+  </div>
+
+  <!-- LOGAR -->
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Login</ion-label>
+      <ion-input type="text" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Senha</ion-label>
+      <ion-input type="password" ></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button full round (click)="logar()" color="light">Logar</button>
+  <button ion-button outline round block (click)="cadastrar()" color="light">Cadastrar</button>
+  <br/>
+  
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-5><hr/></ion-col>
+      <ion-col col-2 text-center>OU</ion-col>
+      <ion-col col-5><hr/></ion-col>
+    </ion-row>
+  
+    <!-- REDES SOCIAIS -->
+    <ion-row>
+      <ion-col col-6>
+          <button ion-button block outline round  color="light"><ion-icon name="logo-facebook"></ion-icon></button>
+      </ion-col>
+
+      <ion-col col-6>
+          <button ion-button block outline round color="light"><ion-icon name="logo-google"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  
+  </ion-grid>
+
+</ion-content>

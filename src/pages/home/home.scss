@@ -1,3 +1,15 @@
 page-home {
+    #resumo {
+        height: 200px;
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        color: white;
+        background-image: linear-gradient(to bottom, #43e97b 0%, #80BD9E 100%);
+        font-family: 'Quicksand', sans-serif;
 
+        h4 {
+            margin-top: 2px;
+        }
+    }
 }

@@ -1,0 +1,54 @@
+page-login {
+
+    ion-content {
+        background-image: linear-gradient(to right top, #64b3f4 0%, #c2e59c 100%);
+    }
+
+    #icon {
+        max-width: 50%;
+    }
+
+    #title {
+        margin-top: -20px;
+        text-align: center;
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 30px;
+    }
+
+    .divider {
+        width:500px;
+        text-align:center;
+    }
+    
+    .divider hr {
+        margin-left:auto;
+        margin-right:auto;
+        width:40%;
+    
+    }
+    
+    .left {
+        float:left;
+        width: 30%;
+    }
+    
+    .right {
+        float:right;
+        width: 30%;
+    }
+    
+
+    ion-list {
+        border-radius: 10px !important;
+    }
+    ion-label {
+        color: white !important;
+        font-style: bold !important;
+        
+    }
+
+    ion-item {
+        background: rgba(0, 0, 0, 0.1) !important;
+    }
+}

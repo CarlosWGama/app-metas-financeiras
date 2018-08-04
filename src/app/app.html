@@ -1,1 +1,20 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="nav">
+    <ion-header style="height: 120px" >
+        <ion-toolbar id="drawer-menu-header" style="background-image: linear-gradient(to right bottom, #43e97b 0%, #38f9d7 100%) !important;">
+            <ion-title>Menu</ion-title>
+            <p id="login">carloswgama@gmail.com</p>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content padding-top>
+        <ion-list no-lines>
+            <button ion-item *ngFor="let pagina of paginas" (click)="abrirPagina(pagina.page)" menuClose>
+                <ion-icon [name]="pagina.icon"></ion-icon> {{pagina.descricao}}
+            </button>
+            <button ion-item (click)="sair()" menuClose>
+                <ion-icon name="exit"></ion-icon> Sair
+            </button>            
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+<ion-nav #nav [root]="rootPage"></ion-nav>

@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="meta != 0">Editar meta</ion-title>
+    <ion-title *ngIf="meta == 0">Criar meta</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+
+    <ion-list>
+        <ion-item-group>
+          <ion-item-divider color="light">Detalhes</ion-item-divider>
+          <!-- TITULO -->
+          <ion-item>
+            <ion-label fixed>Título</ion-label>
+            <ion-input type="text" ></ion-input>
+          </ion-item>
+      
+          <!-- Valor total -->
+          <ion-item>
+            <ion-label fixed>Valor total</ion-label>
+            <ion-input type="number" [(ngModel)]="total"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Possui prazo?</ion-label>
+            <ion-toggle [(ngModel)]="prazo" checked=""  ></ion-toggle>
+          </ion-item>
+      
+          <div [hidden]="!prazo">
+          <!-- PRAZO -->
+          <ion-item>
+            <ion-label fixed>Prazo</ion-label>
+            <ion-input type="date" [(ngModel)]="dataFinal" ></ion-input>
+          </ion-item>
+      
+          <!-- FREQUENCIA -->
+          <ion-item>
+            <ion-label>Frequencia a inserir</ion-label>
+            <ion-select [(ngModel)]="frequencia" >
+              <ion-option value="1" >Diário</ion-option>
+              <ion-option value="2" >Semanal</ion-option>
+              <ion-option value="3" >Mensal</ion-option>
+              <ion-option value="4" >Semestral</ion-option>
+              <ion-option value="5" >Anual</ion-option>
+            </ion-select>
+          </ion-item>
+      
+          <!-- RECOMENDACACAO -->
+          <ion-item>
+              <ion-label fixed>Recomendação</ion-label>
+              <ion-input type="date" [value]="valorRecomendado" ></ion-input>
+          </ion-item>
+        </div>
+      </ion-item-group>
+
+      <!-- MEMBROS -->
+      <ion-item-group>
+          <ion-item-divider color="light">Membros</ion-item-divider>
+
+          <!-- MEMBRO -->
+          <ion-item *ngFor="let membro of membros"><h2>{{membro}}</h2></ion-item>
+          <!-- [FIM] MEMBRO -->
+
+          <button ion-item (click)="adicionarMembro()" color="secondary" text-center>
+            <ion-icon name="add"></ion-icon> Adicionar Membro
+          </button>
+      </ion-item-group>
+      <!-- [FIM] MEMBROS -->
+    </ion-list>
+
+
+    <button ion-button full (click)="salvar()">Salvar</button>
+</ion-content>
