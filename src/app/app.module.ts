@@ -11,6 +11,7 @@ import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.mo
 import { ObjetivoPageModule } from '../pages/objetivo/objetivo.module';
 import { ObjetivoEdicaoPageModule } from '../pages/objetivo-edicao/objetivo-edicao.module';
 import { ComponentsModule } from '../components/components.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ComponentsModule } from '../components/components.module';
     ConfiguracoesPageModule,
     ObjetivoPageModule,
     ObjetivoEdicaoPageModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
