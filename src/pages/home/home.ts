@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, MenuController } from 'ionic-angular/umd';
+import { NavController, AlertController, MenuController } from 'ionic-angular';
 import { ObjetivoEdicaoPage } from '../objetivo-edicao/objetivo-edicao';
 import { ObjetivoPage } from '../objetivo/objetivo';
 

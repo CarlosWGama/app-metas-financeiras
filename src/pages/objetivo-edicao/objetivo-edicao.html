@@ -21,7 +21,7 @@
           <!-- Valor total -->
           <ion-item>
             <ion-label fixed>Valor total</ion-label>
-            <ion-input type="number" [(ngModel)]="total"></ion-input>
+            <ion-input type="number" [(ngModel)]="total" (ionBlur)="recomendado()"></ion-input>
           </ion-item>
       
           <ion-item>
@@ -33,13 +33,13 @@
           <!-- PRAZO -->
           <ion-item>
             <ion-label fixed>Prazo</ion-label>
-            <ion-input type="date" [(ngModel)]="dataFinal" ></ion-input>
+            <ion-input type="date" [(ngModel)]="dataFinal" (blur)="recomendado()" ></ion-input>
           </ion-item>
       
           <!-- FREQUENCIA -->
           <ion-item>
             <ion-label>Frequencia a inserir</ion-label>
-            <ion-select [(ngModel)]="frequencia" >
+            <ion-select [(ngModel)]="frequencia" (ionChange)="recomendado()" >
               <ion-option value="1" >Diário</ion-option>
               <ion-option value="2" >Semanal</ion-option>
               <ion-option value="3" >Mensal</ion-option>
@@ -50,8 +50,8 @@
       
           <!-- RECOMENDACACAO -->
           <ion-item>
-              <ion-label fixed>Recomendação</ion-label>
-              <ion-input type="date" [value]="valorRecomendado" ></ion-input>
+              <p>Valor aproximado para guarar no período</p>
+              <div id="valor-recomendado">{{ valorRecomendado }}</div>
           </ion-item>
         </div>
       </ion-item-group>

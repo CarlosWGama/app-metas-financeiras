@@ -28,10 +28,6 @@ export class ProgressBarComponent implements OnInit {
     this.cor = 'red';
     if (this.porcentagem > 33) this.cor = 'yellow';
     if (this.porcentagem > 70) this.cor = 'green';
-    console.log(this.atual);
-    console.log(this.porcentagem);
-    console.log(this.max);
-    console.log(this.cor);  
   }
 
 }

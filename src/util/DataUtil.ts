@@ -53,16 +53,20 @@ export class DataUtil {
      */
     public static diferencaDias(dataFinal: string, dataInicio?: string) {
         let dataF, dataI;
-        if (dataInicio == null) {
-            //dataInicio = new Date().toDateString();
-            dataInicio = '2018-08-04';
-        }
+        //Fim
         dataF = dataFinal.split('-'); //0 - ano | 1 - mes | 2 - dias
-        dataI = dataInicio.split('-');//0 - ano | 1 - mes | 2 - dias
+        dataF = [parseInt(dataF[0]), parseInt(dataF[1]), parseInt(dataF[2])];
+        //Inicio
+        if (dataInicio == null) {
+            let date = new Date();
+            dataI = [date.getFullYear(), date.getMonth()+1, date.getDate()];
+        } else {
+            dataI = dataInicio.split('-');//0 - ano | 1 - mes | 2 - dias
+        }
 
         let total = 0;
         //Soma os dias dos anos 
-        for (let i = dataI[0]; dataI[0] < dataF[0]; i++) 
+        for (let i = dataI[0]; (i+1) < dataF[0]; i++) 
             total += DataUtil.anoToDias(i);
         
         let bissexto;
@@ -77,7 +81,7 @@ export class DataUtil {
             bissexto = DataUtil.anoIsBissexto(dataF[0]);
             for (let i = 1; i < dataF[1]; i++) 
                 total += DataUtil.mesToDias(i, bissexto);
-            total += dataI[2]; 
+            total += dataF[2]; 
         } else {
             if (dataI[1] < dataF[1]) {
                 //Ano inicial
@@ -86,6 +90,8 @@ export class DataUtil {
                     total += DataUtil.mesToDias(i, bissexto);
                 total -= dataI[2];
                 total += dataF[2];  
+            } else if (dataI[1] == dataF[1]) {
+                total = dataF[2] - dataI[2];
             }
         }
 

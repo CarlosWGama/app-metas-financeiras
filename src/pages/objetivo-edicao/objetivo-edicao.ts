@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular/umd';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { DataUtil } from '../../util/DataUtil';
 
 @IonicPage()
@@ -62,13 +62,15 @@ export class ObjetivoEdicaoPage {
     else {
       if (this.dataFinal != "") {
         let dias = DataUtil.diferencaDias(this.dataFinal);
-
+        console.log(dias);
         let valorAoDia = parseFloat((resta/dias).toFixed(2));
         if (this.frequencia == 1) this.valorRecomendado = valorAoDia;
         if (this.frequencia == 2) this.valorRecomendado = valorAoDia * 7;
         if (this.frequencia == 3) this.valorRecomendado = valorAoDia * 30;
         if (this.frequencia == 4) this.valorRecomendado = valorAoDia * 30 * 6;
         if (this.frequencia == 5) this.valorRecomendado = valorAoDia * 365;
+        if (this.valorRecomendado > resta) this.valorRecomendado = resta;
+        this.valorRecomendado = parseFloat(this.valorRecomendado.toFixed(2));
       }
     }
   }
