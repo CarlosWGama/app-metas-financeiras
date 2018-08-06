@@ -1,0 +1,20 @@
+<ion-header no-border>
+    <ion-navbar>
+      <ion-title>Objetivo</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content>
+  <ion-list >
+    
+    <ion-item>
+      <h2>Sem categoria</h2>
+      <p>Investido: $$ 10000 </p>
+    </ion-item>
+    
+    <ion-item *ngFor="let categoria  of [1, 2, 3, 4, 5] ">
+      <h2>Ações</h2>
+      <p>Investido: $$$ {{ categoria * 1000}} </p>
+    </ion-item>
+  </ion-list>
+</ion-content>

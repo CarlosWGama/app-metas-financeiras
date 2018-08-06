@@ -1,0 +1,55 @@
+<ion-header no-border>
+  <ion-navbar>
+    <ion-title>Objetivo</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <!-- RESUMO -->
+  <div id="resumo">
+      <h2>TITULO</h2>
+      <h4>Meta: 10000</h4>
+      <h4>Alcançado: 1000 (10%)</h4>
+  </div>
+  <!-- [FIM] RESUMO -->
+
+  <ion-list>
+      <div *ngFor="let usuario of ['carloswgama@gmail.com', 'mylanagama@gmail.com']">
+        <!-- USUARIO -->
+        <ion-list-header>
+          <h2 class="usuario-lista">{{ usuario }}</h2> 
+          <p class="usuario-contribuicao">Total: 10000</p>
+        </ion-list-header>
+        
+        <!-- HISTORICO -->
+        <ion-item-sliding *ngFor="let isDeposit of [true, false, true]">
+        
+          <!-- DESCRIÇÃO -->
+          <ion-item>
+            <ion-thumbnail item-start >
+              
+              <img [src]="'../../assets/imgs/'+(isDeposit ? 'deposit':'withdraw')+'.png'">
+            </ion-thumbnail>
+            <h2 [ngClass]="{'deposit': isDeposit, 'withdraw': !isDeposit}">{{ (isDeposit ? '+' : '-')}} $$$ 1000</h2>
+            <p>{{ '2018-08-10' | dataBrasil }}</p>
+            <p>Ações</p>  
+          </ion-item>
+
+          <!-- OPCÕES -->
+          <ion-item-options side="right" *ngIf="usuario == 'carloswgama@gmail.com'">
+            <button ion-button color="danger" (click)="remover()">
+              <ion-icon name="trash"></ion-icon>
+              Remover
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+       
+      </div>
+  </ion-list>
+
+  <ion-fab right top>
+    <button ion-fab (click)="adicionarTransacao()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+   
+
+</ion-content>

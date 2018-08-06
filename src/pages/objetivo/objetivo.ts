@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController, AlertController } from 'ionic-angular';
 import { OpcoesObjetivoPage } from '../opcoes-objetivo/opcoes-objetivo';
-import { ProgressBarComponent } from '../../components/progress-bar/progress-bar';
+import { ObjetivoGeralPage } from '../objetivo-geral/objetivo-geral';
+import { ObjetivoCategoriaPage } from '../objetivo-categoria/objetivo-categoria';
 
 /**
  * @author Carlos W. Gama
@@ -15,12 +16,18 @@ import { ProgressBarComponent } from '../../components/progress-bar/progress-bar
 export class ObjetivoPage {
 
   meta: number = 1;
+  tabGeral = ObjetivoGeralPage;
+  tabCategoria = ObjetivoCategoriaPage;
+  tabParams: {meta: number} = null;
 
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,
      private popoverCtrl: PopoverController, private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
+    this.tabParams = {meta: this.meta};
+
     console.log('ionViewDidLoad ObjetivoPage');
   }
 
@@ -28,38 +35,4 @@ export class ObjetivoPage {
     this.popoverCtrl.create(OpcoesObjetivoPage, {meta: meta}).present({ev: event});
   }
 
-  adicionarTransacao() {
-    this.alertCtrl.create({
-      enableBackdropDismiss: false,
-      title: "Adicionar transação",
-      inputs: [
-        {name: 'deposito', type:'radio', value:'true', checked: true, label:'Deposito'},
-        {name: 'deposito', type:'radio', value:'false', label:'Saque'}
-      ], 
-      buttons:[
-        {text: "Cancelar", role: 'cancel'},
-        {text: "Adicionar", handler: (data) => {
-
-          let isDeposito = data;
-
-          this.alertCtrl.create({
-              enableBackdropDismiss: false,
-              title: "Adicionar transação",
-              inputs: [
-                {name: 'valor', type:'number',  placeholder:'Valor da transação'},
-                {name: 'data', type:'date', placeholder:'Data da transação'}
-              ], 
-              buttons:[
-                {text: "Cancelar", role: 'cancel'},
-                {text: "Adicionar", handler: (data) => {
-                  
-                }}
-              ] 
-            }).present();
-
-
-        }}
-      ] 
-    }).present();
-  }
 }

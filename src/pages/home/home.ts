@@ -20,7 +20,7 @@ export class HomePage {
   }
 
   abrir(meta) {
-    this.navCtrl.push(ObjetivoPage);
+    this.navCtrl.push(ObjetivoPage, {meta: meta});
   }
 
   novo() {
