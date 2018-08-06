@@ -8,6 +8,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
+import { TranslateService } from '../../node_modules/@ngx-translate/core';
 @Component({
   templateUrl: 'app.html'
 })
@@ -24,7 +25,10 @@ export class MyApp {
   nav: NavController;
 
   constructor(platform: Platform, statusBar: StatusBar, 
-    splashScreen: SplashScreen, screenOrientation: ScreenOrientation) {
+    splashScreen: SplashScreen, screenOrientation: ScreenOrientation, private translate: TranslateService) {
+
+    //Escolhe o idioma
+    this.translate.setDefaultLang("en");
 
     //Trava a camera em modo retrato
     screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);

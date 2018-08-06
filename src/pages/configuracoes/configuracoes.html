@@ -2,7 +2,7 @@
 
   <ion-navbar>
     <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
-    <ion-title>Configurações</ion-title>
+    <ion-title>{{ 'SETTINGS' | translate }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,12 +11,12 @@
 <ion-content padding>
   <ion-list>
     <ion-item>
-      <ion-label>Idioma: </ion-label>
+      <ion-label>{{ 'LANGUAGE' | translate }}: </ion-label>
       <ion-select [(ngModel)]="idioma" >
         <ion-option value="en" >English</ion-option>
         <ion-option value="pt-BR" >Português</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>
-  <button ion-button full (click)="salvar">Salvar</button>
+  <button ion-button full (click)="salvar()">{{ 'SAVE' | translate }}</button>
 </ion-content>

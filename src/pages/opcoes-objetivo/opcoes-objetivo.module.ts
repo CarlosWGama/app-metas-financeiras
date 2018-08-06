@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { OpcoesObjetivoPage } from './opcoes-objetivo';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,8 @@ import { OpcoesObjetivoPage } from './opcoes-objetivo';
   ],
   imports: [
     IonicPageModule.forChild(OpcoesObjetivoPage),
+    TranslateModule.forChild()
+
   ],
 })
 export class OpcoesObjetivoPageModule {}

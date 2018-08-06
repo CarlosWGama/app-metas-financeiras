@@ -13,6 +13,9 @@ import { ObjetivoEdicaoPageModule } from '../pages/objetivo-edicao/objetivo-edic
 import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClient, HttpClientModule } from '../../node_modules/@angular/common/http';
+import { createTranslateLoader } from '../util/createTranslateLoader';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,21 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
   ],
   imports: [
     BrowserModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     IonicModule.forRoot(MyApp),
     LoginPageModule,
     ConfiguracoesPageModule,
     ObjetivoPageModule,
     ObjetivoEdicaoPageModule,
     ComponentsModule,
-    PipesModule
+    PipesModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

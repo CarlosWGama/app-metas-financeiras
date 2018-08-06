@@ -5,6 +5,7 @@ import { PipesModule } from '../../pipes/pipes.module';
 import { OpcoesObjetivoPageModule } from '../opcoes-objetivo/opcoes-objetivo.module';
 import { ObjetivoGeralPageModule } from '../objetivo-geral/objetivo-geral.module';
 import { ObjetivoCategoriaPageModule } from '../objetivo-categoria/objetivo-categoria.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,9 @@ import { ObjetivoCategoriaPageModule } from '../objetivo-categoria/objetivo-cate
     IonicPageModule.forChild(ObjetivoPage),
     OpcoesObjetivoPageModule,
     ObjetivoGeralPageModule,
-    ObjetivoCategoriaPageModule
+    ObjetivoCategoriaPageModule,
+    TranslateModule.forChild()
+
   ],
 })
 export class ObjetivoPageModule {}
