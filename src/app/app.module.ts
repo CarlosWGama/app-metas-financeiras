@@ -12,6 +12,7 @@ import { ObjetivoPageModule } from '../pages/objetivo/objetivo.module';
 import { ObjetivoEdicaoPageModule } from '../pages/objetivo-edicao/objetivo-edicao.module';
 import { ComponentsModule } from '../components/components.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PipesModule } from '../pipes/pipes.module';
   providers: [
     StatusBar,
     SplashScreen,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
