@@ -3,6 +3,7 @@ import { NavController, AlertController, MenuController } from 'ionic-angular';
 import { ObjetivoEdicaoPage } from '../objetivo-edicao/objetivo-edicao';
 import { ObjetivoPage } from '../objetivo/objetivo';
 
+declare var firebase;
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'

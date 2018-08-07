@@ -5,6 +5,13 @@
     "LOGIN": "Login",
     "PASSWORD": "Senha",
 
+    "AUTH_WEAK_PASSWORD":"Senha deve ter pelo menos 6 caracteres.",
+    "AUTH_INVALID_EMAIL":"O email é inválido.",
+    "AUTH_WRONG_PASSWORD": "Senha inválida",
+    "AUTH_NOT_FOUND":"Não foi encontrado nenhum usuário com este email.",
+    "AUTH_FAIL":"Ocorreu uma falha na autenticação",
+    "AUTH_ALREADY_IN_USE": "Email já está sendo usado por outro usuário",
+
     "SAVE": "Salvar",
 
 

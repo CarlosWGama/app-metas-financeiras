@@ -9,11 +9,11 @@
   <ion-list>
     <ion-item>
       <ion-label floating>{{ 'LOGIN' | translate }}</ion-label>
-      <ion-input type="text" ></ion-input>
+      <ion-input type="text" [(ngModel)]="login" ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating >{{ 'PASSWORD' | translate }}</ion-label>
-      <ion-input type="password" ></ion-input>
+      <ion-input type="password"  [(ngModel)]="senha" ></ion-input>
     </ion-item>
   </ion-list>
   <button ion-button full round (click)="logar()" color="light">{{ 'SIGN_IN' | translate }}</button>
