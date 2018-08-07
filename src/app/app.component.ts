@@ -3,7 +3,7 @@ import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-
+import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
@@ -25,10 +25,17 @@ export class MyApp {
   nav: NavController;
 
   constructor(platform: Platform, statusBar: StatusBar, 
-    splashScreen: SplashScreen, screenOrientation: ScreenOrientation, private translate: TranslateService) {
+    splashScreen: SplashScreen, screenOrientation: ScreenOrientation, 
+    private translate: TranslateService, private storage: Storage) {
 
     //Escolhe o idioma
-    this.translate.setDefaultLang("en");
+    this.storage.get('idioma').then((val) => {
+      if (val == null)
+        this.translate.setDefaultLang('en');
+      else
+        this.translate.setDefaultLang(val);
+    });
+    
 
     //Trava a camera em modo retrato
     screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);

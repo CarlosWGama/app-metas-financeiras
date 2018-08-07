@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
+import { Storage } from '@ionic/storage';
 
 /**
  * @Carlos W. Gama
@@ -15,7 +16,8 @@ export class ConfiguracoesPage {
 
   idioma: string = 'en';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private translate: TranslateService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private translate: TranslateService, private storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -24,6 +26,7 @@ export class ConfiguracoesPage {
 
   salvar() {
     this.translate.use(this.idioma);
+    this.storage.set("idioma", this.idioma);
   }
 
 }
