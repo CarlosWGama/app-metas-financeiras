@@ -21,7 +21,7 @@
   <br/>
   
 
-  <ion-grid>
+  <ion-grid *ngIf="false">
     <ion-row>
       <ion-col col-5><hr/></ion-col>
       <ion-col col-2 text-center>OU</ion-col>
@@ -29,13 +29,13 @@
     </ion-row>
   
     <!-- REDES SOCIAIS -->
-    <ion-row>
+    <ion-row >
       <ion-col col-6>
-          <button ion-button block outline round  color="light"><ion-icon name="logo-facebook"></ion-icon></button>
+          <button ion-button block outline round (click)="loginFacebook()" color="light"><ion-icon name="logo-facebook"></ion-icon></button>
       </ion-col>
 
       <ion-col col-6>
-          <button ion-button block outline round color="light"><ion-icon name="logo-google"></ion-icon></button>
+          <button ion-button block outline round (click)="loginGoogle()" color="light"><ion-icon name="logo-google"></ion-icon></button>
       </ion-col>
     </ion-row>
   

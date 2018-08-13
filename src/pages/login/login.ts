@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, MenuController, Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
 
 //Serve para chamar a API do Firebase 
 declare var firebase;
@@ -21,7 +22,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
       private alertCtrl: AlertController, private menuCtrl: MenuController,
-    public translate: TranslateService, private events: Events) {
+    public translate: TranslateService, private events: Events,
+    private usuarioProvider: UsuarioProvider) {
   }
   
   /**
@@ -50,8 +52,11 @@ export class LoginPage {
     //Realiza o cadastro no Firebase
     firebase.auth().createUserWithEmailAndPassword(this.login, this.senha).then(() => {
       this.atualizarEmailMenu();
+      let user = firebase.auth().currentUser;
+      this.usuarioProvider.cadastrar(user.uid, user.email);
       this.navCtrl.setRoot(HomePage);
     }).catch((error) => {
+      console.log(error);
       this.chamarErro(error.code);
     });
   }
@@ -60,14 +65,44 @@ export class LoginPage {
    * Metodo responsável por realizar o login com o Facebook
    */
   loginFacebook() {
-
+    var provider = new firebase.auth.FacebookAuthProvider();
+    
+    firebase.auth().signInWithRedirect(provider).then(function() {
+      return firebase.auth().getRedirectResult();
+    }).then(function(result) {
+      // This gives you a Google Access Token.
+      // You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
   }
 
   /**
    * Metodo responsável por realizar o login com o Google
    */
   loginGoogle() {
-
+    var provider = new firebase.auth.GoogleAuthProvider();
+    
+    firebase.auth().signInWithRedirect(provider).then(function() {
+      return firebase.auth().getRedirectResult();
+    }).then(function(result) {
+      // This gives you a Google Access Token.
+      // You can use it to access the Google API.
+      var token = result.credential.accessToken;
+      // The signed-in user info.
+      var user = result.user;
+      // ...
+    }).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
   }
 
    /**

@@ -17,6 +17,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '../../node_modules/@angular/common/http';
 import { createTranslateLoader } from '../util/createTranslateLoader';
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import { createTranslateLoader } from '../util/createTranslateLoader';
     StatusBar,
     SplashScreen,
     ScreenOrientation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    UsuarioProvider,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UsuarioProvider
   ]
 })
 export class AppModule {}
