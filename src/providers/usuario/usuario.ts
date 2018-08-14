@@ -1,7 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { DataBrasilPipe } from '../../pipes/data-brasil/data-brasil';
-import { on } from 'cluster';
 
 declare var firebase;
 
@@ -33,9 +31,12 @@ export class UsuarioProvider {
    * Checa se um usuário existe, retorna a consulta
    */
   public exist(email: string): Promise<boolean> {
-    return this.ref.orderByChild('email').equalsTo(email).on('value', (snapshot) =>  {
-      return (snapshot.exists());
+    return new Promise<boolean>((resolve, erro) => {
+      resolve(this.ref.orderByChild('email').equalTo(email).once('value').then((snapshot) =>  {
+        return (snapshot.exists());
+      }));
     });
+     
   }
 
 }

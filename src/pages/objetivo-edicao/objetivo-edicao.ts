@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController, LoadingController } from 'ionic-angular';
 import { DataUtil } from '../../util/DataUtil';
+import { Frequencia } from '../../models/Frequencia';
+import { Meta } from '../../models/Meta';
+import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { TranslateService } from '../../../node_modules/@ngx-translate/core';
+import { MetaProvider } from '../../providers/meta/meta';
 
+declare var firebase;
 @IonicPage()
 @Component({
   selector: 'page-objetivo-edicao',
@@ -9,24 +15,19 @@ import { DataUtil } from '../../util/DataUtil';
 })
 export class ObjetivoEdicaoPage {
 
-  meta: number = 0;
-
-  prazo: boolean = false;
-
-  membros: string[] = [];
-
-  dataFinal: string = "";
-  total: number = 100;
-  valorAtual: number = 0; 
-  valorRecomendado: number = 0;
-  frequencia:number = 1; 
+  meta: Meta = new Meta();
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private toastCtrl: ToastController, private alertCtrl: AlertController) {
+    private toastCtrl: ToastController, private alertCtrl: AlertController,
+    private usuarioProvider: UsuarioProvider, private loadingCtrl: LoadingController,
+    private translate: TranslateService, private metaProvider:MetaProvider) {
   }
 
   ionViewDidLoad() {
-    this.meta = this.navParams.get("meta") as number;
+    this.meta = this.navParams.get("meta") as Meta;
+    console.log(this.meta);
+    if (this.meta == null) this.meta = new Meta();
+    this.meta.addMembro(firebase.auth().currentUser.email);
     console.log('ionViewDidLoad ObjetivoEdicaoPage');
   }
 
@@ -41,13 +42,21 @@ export class ObjetivoEdicaoPage {
         {text: "Cancelar", role: "cancel"},
         {text: "Adicionar", handler:(dados) => {
           if (dados.email == "") {
-            this.alertCtrl.create({
-              title: "Erro",
-              message: "Adicione um email",
-              buttons: ["Ok"]
-            }).present();
+            this.translate.get("INVALID_EMAIL").toPromise().then((msg) => { this.chamarAlerta(msg) });
           } else {
-            this.membros.push(dados.email);
+
+            let load = this.loadingCtrl.create({content: "Aguarde", enableBackdropDismiss: false});
+            load.present();
+            this.usuarioProvider.exist(dados.email).then((achou) => {
+              if (achou) {
+                this.meta.addMembro(dados.email);
+                this.recomendado();
+              } else 
+                this.translate.get("INVALID_EMAIL").toPromise().then((msg) => { this.chamarAlerta(msg) });
+              load.dismiss();
+              
+            });
+            
           }
         }}
       ]
@@ -55,32 +64,79 @@ export class ObjetivoEdicaoPage {
     }).present();
   }
 
+  /**
+   * Exibe uma mensagem de erro para  o usuário
+   * @param mensagem 
+   */
+  private chamarAlerta(mensagem: string) {
+    this.alertCtrl.create({
+      title: "Erro",
+      message: mensagem,
+      buttons: ["Ok"]
+    }).present();
+  }
+
   recomendado() {
-    let resta = this.total - this.valorAtual;
+    let resta = this.meta.objetivo - this.meta.acumulado;
     if (resta <= 0)
-      this.valorRecomendado = 0;
+      this.meta.valorRecomendado = 0;
     else {
-      if (this.dataFinal != "") {
-        let dias = DataUtil.diferencaDias(this.dataFinal);
+      console.log(this.meta.prazo);
+      if (this.meta.temPrazo == true && this.meta.prazo != undefined) {
+        let dias = DataUtil.diferencaDias(this.meta.prazo);
         console.log(dias);
         let valorAoDia = parseFloat((resta/dias).toFixed(2));
-        if (this.frequencia == 1) this.valorRecomendado = valorAoDia;
-        if (this.frequencia == 2) this.valorRecomendado = valorAoDia * 7;
-        if (this.frequencia == 3) this.valorRecomendado = valorAoDia * 30;
-        if (this.frequencia == 4) this.valorRecomendado = valorAoDia * 30 * 6;
-        if (this.frequencia == 5) this.valorRecomendado = valorAoDia * 365;
-        if (this.valorRecomendado > resta) this.valorRecomendado = resta;
-        this.valorRecomendado = parseFloat(this.valorRecomendado.toFixed(2));
+        valorAoDia /= this.meta.membros.length;
+        if (this.meta.frequencia == Frequencia.DIARIA) this.meta.valorRecomendado = valorAoDia;
+        if (this.meta.frequencia == Frequencia.SEMANAL) this.meta.valorRecomendado = valorAoDia * 7;
+        if (this.meta.frequencia == Frequencia.MENSAL) this.meta.valorRecomendado = valorAoDia * 30;
+        if (this.meta.frequencia == Frequencia.SEMESTRAL) this.meta.valorRecomendado = valorAoDia * 30 * 6;
+        if (this.meta.frequencia == Frequencia.ANUAL) this.meta.valorRecomendado = valorAoDia * 365;
+        if (this.meta.valorRecomendado > resta) this.meta.valorRecomendado = resta;
+        this.meta.valorRecomendado = parseFloat(this.meta.valorRecomendado.toFixed(2));
       }
     }
   }
 
+  /**
+   * Salva a meta
+   */
   salvar() {
-    this.toastCtrl.create({
-      message: "Meta salva com sucesso",
-      duration: 3000
-    }).present();
-    this.navCtrl.pop();
+    if (this.validar()) {
+      if (this.meta.id == "") {
+        this.metaProvider.cadastrar(this.meta);
+      } else {
+        this.metaProvider.atualizar(this.meta);
+      }
+
+      this.toastCtrl.create({
+        message: "Meta salva com sucesso",
+        duration: 3000
+      }).present();
+      this.navCtrl.pop();
+    }
+  }
+
+  /**
+   * Valida o formuário
+   */
+  validar():boolean {
+    if (this.meta.titulo == "") {
+      this.translate.get("TITLE_REQUIRED").toPromise().then((msg) => { this.chamarAlerta(msg) });
+      return false;
+    }
+
+    if (this.meta.objetivo == 0) {
+      this.translate.get("GOAL_REQUIRED").toPromise().then((msg) => { this.chamarAlerta(msg) });
+      return false;
+    }
+
+    if (this.meta.temPrazo && this.meta.prazo == "") {
+      this.translate.get("DEADLINE_REQUIRED").toPromise().then((msg) => { this.chamarAlerta(msg) });
+      return false;
+    }
+
+    return true;
   }
 
 

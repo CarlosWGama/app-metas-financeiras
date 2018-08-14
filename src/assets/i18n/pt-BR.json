@@ -14,6 +14,28 @@
 
     "SAVE": "Salvar",
 
+    "EDIT_GOAL": "Editar Meta",
+    "CREATE_GOAL": "Criar Meta",
+    "INVALID_EMAIL": "E-mail inválido ou não encontrado",
+    "TITLE_REQUIRED": "Título é obrigatório",
+    "GOAL_REQUIRED": "Valor total é obrigatório",
+    "DEADLINE_REQUIRED": "Prazo é obrigatório",
+    "DETAILS": "Detalhes",
+    "TITLE": "Título",
+    "GOAL": "Valor do objetivo",
+    "HAS_DEADLINE": "Tem prazo?",
+    "DEADLINE": "Prazo",
+    "FREQUENCE_DEPOSIT": "Frequencia do deposito",
+    "NEXT_DEPOSIT_RECOMMENDATION": "Valor aproximado recomendado por período",
+    "MEMBERS": "Membros",
+    "ADD_MEMBER": "Adicionar membro",
+
+    "DAYLY": "Diário",
+    "WEEKLY": "Semanal",
+    "MONTHLY": "Mensal",
+    "SEMESTER": "Semestral",
+    "ANNUAL": "Anual",
+
 
     "SETTINGS": "Configurações",
     "LANGUAGE": "Idioma"

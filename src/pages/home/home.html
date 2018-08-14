@@ -17,13 +17,13 @@
     <!-- METAS -->
     <ion-card *ngFor="let meta of metas">
       <ion-item (click)="abrir(meta)">
-        <h2>Casamento</h2>
-        <p>Prazo: 28/11/1990</p>
+        <h2>{{ meta.titulo }}</h2>
+        <p *ngIf="meta.temPrazo">Prazo: {{ meta.prazo | dataBrasil }}</p>
       </ion-item>
     
       <ion-card-content (click)="abrir(meta)">
-          <progress-bar [max]="1000" [atual]="meta"></progress-bar>
-          ({{meta}} / 1.000)
+          <progress-bar [max]="meta.objetivo" [atual]="meta.acumulado"></progress-bar>
+          ({{meta.acumulado}} / {{meta.objetivo}})
       </ion-card-content>
     
       <ion-row>

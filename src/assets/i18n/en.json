@@ -16,6 +16,28 @@
     "SAVE": "SAVE",
 
 
+    "EDIT_GOAL": "Edit Goal",
+    "CREATE_GOAL": "Create Goal",
+    "INVALID_EMAIL": "Invalid email or email not found",
+    "TITLE_REQUIRED": "Title is required",
+    "GOAL_REQUIRED": "Goal is required",
+    "DEADLINE_REQUIRED": "Deadline is required",
+    "DETAILS": "Details",
+    "TITLE": "Title",
+    "GOAL": "Goal",
+    "HAS_DEADLINE": "Does goal have a deadline?",
+    "DEADLINE": "Deadline",
+    "FREQUENCE_DEPOSIT": "Frequence of deposit",
+    "NEXT_DEPOSIT_RECOMMENDATION": "Next recommendated value on deposit ",
+    "MEMBERS": "Members",
+    "ADD_MEMBER": "Add a member",
+
+    "DAYLY": "Dialy",
+    "WEEKLY": "Weekly",
+    "MONTHLY": "Monthly",
+    "SEMESTER": "Semester",
+    "ANNUAL": "Annual",
+
     "SETTINGS": "Settings",
     "LANGUAGE": "LANGUAGE"
 }

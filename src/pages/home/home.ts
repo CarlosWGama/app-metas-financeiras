@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, MenuController } from 'ionic-angular';
 import { ObjetivoEdicaoPage } from '../objetivo-edicao/objetivo-edicao';
 import { ObjetivoPage } from '../objetivo/objetivo';
+import { Meta } from '../../models/Meta';
+import { Frequencia } from '../../models/Frequencia';
 
 declare var firebase;
 @Component({
@@ -10,7 +12,12 @@ declare var firebase;
 })
 export class HomePage {
 
-  metas = [100, 523, 731, 1000, 1200];
+  metas: Meta[] = [
+    new Meta('1', 'Aposentadoria', 100000, 1000, true, '2050-01-01', Frequencia.MENSAL, 300, ['carloswgama@gmail.com']),
+    new Meta('2', 'Casamento', 20000, 3000, true, '2020-07-08', Frequencia.MENSAL, 300, ['carloswgama@gmail.com', 'mylanagama@gmail.com']),
+    new Meta('3', 'Reserva', 15000, 17000, true, '2024-01-01', Frequencia.MENSAL, 300, ['carloswgama@gmail.com'])
+  ]
+
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, private menuCtrl: MenuController) {
 
@@ -25,7 +32,7 @@ export class HomePage {
   }
 
   novo() {
-    this.navCtrl.push(ObjetivoEdicaoPage, {meta: 0});
+    this.navCtrl.push(ObjetivoEdicaoPage, {meta: new Meta()});
   }
 
   editar(meta) {

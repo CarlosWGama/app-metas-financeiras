@@ -18,6 +18,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '../../node_modules/@angular/common/http';
 import { createTranslateLoader } from '../util/createTranslateLoader';
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { MetaProvider } from '../providers/meta/meta';
 
 @NgModule({
   declarations: [
@@ -53,8 +54,10 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     SplashScreen,
     ScreenOrientation,
     UsuarioProvider,
+    MetaProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsuarioProvider
+    UsuarioProvider,
+    MetaProvider
   ]
 })
 export class AppModule {}
