@@ -6,6 +6,7 @@ import { Meta } from '../../models/Meta';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 import { MetaProvider } from '../../providers/meta/meta';
+import { Usuario } from '../../models/Usuario';
 
 declare var firebase;
 @IonicPage()
@@ -24,10 +25,13 @@ export class ObjetivoEdicaoPage {
   }
 
   ionViewDidLoad() {
-    this.meta = this.navParams.get("meta") as Meta;
-    console.log(this.meta);
+    this.meta.initialize(this.navParams.get("meta") as Meta);
     if (this.meta == null) this.meta = new Meta();
-    this.meta.addMembro(firebase.auth().currentUser.email);
+    this.usuarioProvider.getUsuarioByEmail(firebase.auth().currentUser.email).then((usuario: Usuario) => {
+      this.meta.addMembro(usuario);
+      console.log(this.meta);
+    });
+    
     console.log('ionViewDidLoad ObjetivoEdicaoPage');
   }
 
@@ -47,9 +51,9 @@ export class ObjetivoEdicaoPage {
 
             let load = this.loadingCtrl.create({content: "Aguarde", enableBackdropDismiss: false});
             load.present();
-            this.usuarioProvider.exist(dados.email).then((achou) => {
-              if (achou) {
-                this.meta.addMembro(dados.email);
+            this.usuarioProvider.getUsuarioByEmail(dados.email).then((usuario) => {
+              if (usuario != null) {
+                this.meta.addMembro(usuario);
                 this.recomendado();
               } else 
                 this.translate.get("INVALID_EMAIL").toPromise().then((msg) => { this.chamarAlerta(msg) });

@@ -61,7 +61,7 @@
           <ion-item-divider color="light">{{ 'MEMBERS' | translate }}</ion-item-divider>
 
           <!-- MEMBRO -->
-          <ion-item *ngFor="let membro of meta.membros"><h2>{{membro}}</h2></ion-item>
+          <ion-item *ngFor="let membro of meta.membros"><h2>{{membro.email}}</h2></ion-item>
           <!-- [FIM] MEMBRO -->
 
           <button ion-item (click)="adicionarMembro()" color="secondary" text-center>

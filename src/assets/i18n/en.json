@@ -5,6 +5,12 @@
     "LOGIN": "Login",
     "PASSWORD": "Password",
 
+    "MY_GOALS": "My Goals",
+    "BRIEF": "Brief",
+    "GOALS_REACHED": "Goals Reached",
+    "INVESTIMENTS": "Investiments",
+
+
     "AUTH_WEAK_PASSWORD":"Password should be at least 6 characters",
     "AUTH_INVALID_EMAIL":"The email address is badly formatted.",
     "AUTH_WRONG_PASSWORD": "The password is invalid or the user does not have a password.",

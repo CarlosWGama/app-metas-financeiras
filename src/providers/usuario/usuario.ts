@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Usuario } from '../../models/Usuario';
 
 declare var firebase;
 
@@ -22,6 +23,7 @@ export class UsuarioProvider {
    */
   public cadastrar(uid: string, email: string) {
     this.ref.child(uid).set({
+      "uid": uid,
       'email':  email,
       'cadastro': new Date().toISOString().slice(0, 10)
     });
@@ -36,7 +38,23 @@ export class UsuarioProvider {
         return (snapshot.exists());
       }));
     });
-     
   }
+
+  /**
+   * Retorna um usuário caso ele exista
+   * @param email 
+   */
+  public getUsuarioByEmail(email: string): Promise<Usuario> { 
+    return this.ref.orderByChild('email').equalTo(email).once('value').then((snapshot) =>  {
+      if (snapshot.exists()) {
+        let chaves = Object.keys(snapshot.val());
+        return snapshot.val()[chaves[0]] as Usuario;
+      }
+        
+      return null;
+    });
+  }
+
+
 
 }

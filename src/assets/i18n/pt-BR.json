@@ -5,6 +5,11 @@
     "LOGIN": "Login",
     "PASSWORD": "Senha",
 
+    "MY_GOALS": "Meus Objetivos",
+    "BRIEF": "Resumo",
+    "GOALS_REACHED": "Metas alcançadas",
+    "INVESTIMENTS": "Investimentos",
+
     "AUTH_WEAK_PASSWORD":"Senha deve ter pelo menos 6 caracteres.",
     "AUTH_INVALID_EMAIL":"O email é inválido.",
     "AUTH_WRONG_PASSWORD": "Senha inválida",
