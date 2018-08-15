@@ -2,6 +2,7 @@ import { Frequencia } from "./Frequencia";
 import { Transacao } from "./Transacao";
 import { Usuario } from './Usuario';
 
+declare var firebase;
 /**
  * @author Carlos W. Gama
  * Guarda os dados de cada meta
@@ -69,5 +70,33 @@ export class Meta {
             }
         });
         return transacoes;
+    }
+
+    /**
+     * Busca as metas por categorias
+     */
+    get categorias() {
+        let categorias: {categoria:string, total: number}[] = [];
+
+        if (firebase.auth().currentUser != null) {
+            let usuario = firebase.auth().currentUser.email;
+
+            this.transacoes.forEach((transacao) => {
+                if (transacao.usuario == usuario) {
+                    if (transacao.categoria == undefined || transacao.categoria == '') transacao.categoria = "---";
+                    let index = categorias.map((c) => c.categoria).indexOf(transacao.categoria);
+                    
+                    if (index === -1) { //Cria um novo grupo 
+                        categorias.push({
+                            categoria: transacao.categoria, 
+                            total: (transacao.deposito ? transacao.valor : - transacao.valor )
+                        });
+                    } else { //adiciona no grupo atual
+                        categorias[index].total += (transacao.deposito ? transacao.valor : - transacao.valor );
+                    }
+                }
+            });
+        }
+        return categorias;
     }
 }

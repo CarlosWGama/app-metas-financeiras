@@ -110,7 +110,7 @@ export class ObjetivoEdicaoPage {
       this.meta.valorRecomendado = 0;
     else {
       console.log(this.meta.prazo);
-      if (this.meta.temPrazo == true && this.meta.prazo != undefined) {
+      if (this.meta.temPrazo == true && (this.meta.prazo != undefined && this.meta.prazo != '')) {
         let dias = DataUtil.diferencaDias(this.meta.prazo);
         console.log(dias);
         let valorAoDia = parseFloat((resta/dias).toFixed(2));
@@ -121,7 +121,9 @@ export class ObjetivoEdicaoPage {
         if (this.meta.frequencia == Frequencia.SEMESTRAL) this.meta.valorRecomendado = valorAoDia * 30 * 6;
         if (this.meta.frequencia == Frequencia.ANUAL) this.meta.valorRecomendado = valorAoDia * 365;
         if (this.meta.valorRecomendado > resta) this.meta.valorRecomendado = resta;
+        console.log(this.meta.valorRecomendado);
         this.meta.valorRecomendado = parseFloat(this.meta.valorRecomendado.toFixed(2));
+        console.log(this.meta.valorRecomendado);
       }
     }
   }

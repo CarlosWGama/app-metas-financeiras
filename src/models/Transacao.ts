@@ -1,5 +1,4 @@
 
-
 /**
  * @author Carlos W. Gama
  * Classe responsável por armazenar cada transação realizada

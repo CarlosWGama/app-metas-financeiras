@@ -1,4 +1,6 @@
 {
+    "APP_TITLE": "My Finance's Goals (Beta)",
+
     "SIGN_UP": "SIGN-UP",
     "SIGN_IN": "SIGN-IN",
     "LOGIN": "Login",
@@ -30,6 +32,7 @@
     "QUIT": "Quit",
 
     "GENERAL": "General",
+    "CURRENT": "Current",
     "ADD_TRANSACTION": "Add a Transaction",
     "DEPOSIT": "Deposit",
     "WITHDRAW": "Withdraw",

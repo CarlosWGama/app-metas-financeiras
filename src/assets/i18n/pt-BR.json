@@ -1,4 +1,6 @@
 {
+    "APP_TITLE": "Minhas metas financeiras  (Beta)",
+
     "SIGN_UP": "CADASTRAR",
     "SIGN_IN": "Logar",
     "LOGIN": "Login",
@@ -30,6 +32,7 @@
     "QUIT": "Quit",
 
     "GENERAL": "Geral",
+    "CURRENT": "Valor atual",
     "ADD_TRANSACTION": "Adicionar uma transação",
     "DEPOSIT": "Deposito",
     "WITHDRAW": "Saque",
@@ -49,7 +52,7 @@
     "DEADLINE_REQUIRED": "Prazo é obrigatório",
     "DETAILS": "Detalhes",
     "TITLE": "Título",
-    "GOAL": "Valor do objetivo",
+    "GOAL": "Objetivo",
     "HAS_DEADLINE": "Tem prazo?",
     "DEADLINE": "Prazo",
     "FREQUENCE_DEPOSIT": "Frequencia do deposito",

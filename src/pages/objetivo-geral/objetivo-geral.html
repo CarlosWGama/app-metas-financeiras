@@ -8,8 +8,8 @@
   <!-- RESUMO -->
   <div id="resumo">
       <h2>{{meta.titulo}}</h2>
-      <h4>Meta: {{meta.objetivo}}</h4>
-      <h4>Alcançado: {{ meta.acumulado }} ({{  ((meta.acumulado * 100)/meta.objetivo).toFixed(2) }}%)</h4>
+      <h4>{{ 'GOAL' | translate }}: {{meta.objetivo}}</h4>
+      <h4>{{ 'CURRENT' | translate }}: {{ meta.acumulado }} ({{  ((meta.acumulado * 100)/meta.objetivo).toFixed(2) }}%)</h4>
   </div>
   <!-- [FIM] RESUMO -->
 
