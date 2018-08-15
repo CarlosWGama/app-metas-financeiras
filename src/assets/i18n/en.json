@@ -29,6 +29,8 @@
     "DASHBOARD": "Dashboard",
     "QUIT": "Quit",
 
+    "GENERAL": "General",
+    "CATEGORY": "Category",
 
     "EDIT_GOAL": "Edit Goal",
     "CREATE_GOAL": "Create Goal",
@@ -51,6 +53,8 @@
     "MONTHLY": "Monthly",
     "SEMESTER": "Semester",
     "ANNUAL": "Annual",
+
+    "ALERT_GOAL_REMOVED": "Goal removed",
 
     "SETTINGS": "Settings",
     "LANGUAGE": "LANGUAGE"

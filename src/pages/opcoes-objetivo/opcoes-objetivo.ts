@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController, ViewController } from 'ionic-angular';
 import { ObjetivoEdicaoPage } from '../objetivo-edicao/objetivo-edicao';
 import { HomePage } from '../home/home';
+import { Meta } from '../../models/Meta';
+import { TranslateService } from '../../../node_modules/@ngx-translate/core';
+import { MetaProvider } from '../../providers/meta/meta';
 
 /**
  * @author Carlos W. Gama
@@ -14,16 +17,28 @@ import { HomePage } from '../home/home';
 })
 export class OpcoesObjetivoPage {
 
-  meta: number;
+  meta: Meta = new Meta();
+
+  //Conteudos de tradução
+  transBtnCancelar;
+  transBtnOK;
+  transMsgDeletar;
+  transAlertRemoved;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-     private alertCtrl: AlertController, private toastCtrl: ToastController,
-    private viewCtrl: ViewController) {
+    private alertCtrl: AlertController, private toastCtrl: ToastController,
+    private viewCtrl: ViewController, private translate: TranslateService,
+    private metaProvider: MetaProvider) {
   }
 
   ionViewDidLoad() {
-    this.meta = this.navParams.get("meta") as number;
-    console.log('ionViewDidLoad OpcoesObjetivoPage');
+    this.meta.initialize(this.navParams.get("meta") as Meta);
+
+    this.translate.get("CANCEL").toPromise().then((msg) => this.transBtnCancelar = msg);
+    this.translate.get("OK").toPromise().then((msg) => this.transBtnOK = msg);
+    this.translate.get("REMOVE_GOAL").toPromise().then((msg) => this.transMsgDeletar = msg);
+    this.translate.get("ALERT_GOAL_REMOVED").toPromise().then((msg) => this.transAlertRemoved = msg);
+
   }
 
   editar() {
@@ -32,18 +47,19 @@ export class OpcoesObjetivoPage {
 
   sair() { 
     this.alertCtrl.create({
-      message: 'Você realmente deseja remover essa meta da sua lista?',
+      message: this.transMsgDeletar,
       buttons: [
-        {text: "Cancelar", role: 'cancel'},
-        {text: "Ok", handler:() => {
+        {text: this.transBtnCancelar, role: 'cancel'},
+        {text: this.transBtnOK, handler:() => {
           
           this.toastCtrl.create({
-            message: "Meta removida",
+            message: this.transAlertRemoved,
             duration: 3000
           }).present();
+          
+          this.metaProvider.removerMeta(this.meta);
 
           this.viewCtrl.dismiss().then(() => {
-            //this.navCtrl.setRoot(HomePage);
             this.navCtrl.insert(0, HomePage);
             this.navCtrl.popToRoot();
 

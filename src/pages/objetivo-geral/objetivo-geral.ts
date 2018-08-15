@@ -1,11 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, OnInit, OnChanges } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
+import { Meta } from '../../models/Meta';
 
 /**
- * Generated class for the ObjetivoGeralPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * @author Carlos W. Gama
  */
 
 @IonicPage()
@@ -15,10 +13,18 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class ObjetivoGeralPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController) {
+  meta: Meta = new Meta();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    private alertCtrl: AlertController, private events: Events) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidLoad() {    
+    //Ajuste de Bug do Ionic
+    this.events.subscribe("meta:inicia", (meta) => {
+      this.meta.initialize(meta);
+      console.log("Meta iniciada em Objetivo Geral");
+    });
     console.log('ionViewDidLoad ObjetivoGeralPage');
   }
 

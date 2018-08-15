@@ -33,7 +33,6 @@ export class MyApp {
     splashScreen: SplashScreen, screenOrientation: ScreenOrientation, 
     private translate: TranslateService, private storage: Storage, private events: Events) {
 
-    
     //Escolhe o idioma
     this.storage.get('idioma').then((val) => {
       if (val == null)
@@ -44,15 +43,12 @@ export class MyApp {
 
     //Se o usuário tiver logado vai para a Home Pagase
     firebase.auth().onAuthStateChanged((user) => {
-     
-      console.log(user);
       if (user) {
         this.nav.setRoot(HomePage);
         this.email = firebase.auth().currentUser.email;
       } else 
         this.nav.setRoot(LoginPage);
     });
-
 
     // Cordova Carregado, já pode usar recursos nativos
     platform.ready().then(() => {
@@ -63,8 +59,6 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-    
-  
 
     //Atualiza o login o email sempre que houver um login
     this.events.subscribe("login", (email) => {

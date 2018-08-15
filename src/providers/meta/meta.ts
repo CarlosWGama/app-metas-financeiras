@@ -50,7 +50,6 @@ export class MetaProvider {
   atualizar(meta: Meta) {
 
     this.vinculaUsuario(meta);
-    console.log(meta);
     this.ref.child(meta.id).set(meta);
   }
 
@@ -95,8 +94,7 @@ export class MetaProvider {
 
     //Desvincula
     this.refUM.child(usuarioID).child(metaID).set(null);
-
-
+    
   }
 
   /**

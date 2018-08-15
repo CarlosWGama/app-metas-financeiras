@@ -28,6 +28,9 @@
     "DASHBOARD": "Dashboard",
     "QUIT": "Quit",
 
+    "GENERAL": "Geral",
+    "CATEGORY": "Categoria",
+
     "EDIT_GOAL": "Editar Meta",
     "CREATE_GOAL": "Criar Meta",
     "INVALID_EMAIL": "E-mail inválido ou não encontrado",
@@ -50,7 +53,8 @@
     "SEMESTER": "Semestral",
     "ANNUAL": "Anual",
 
-
+    "ALERT_GOAL_REMOVED": "Objetivo removido",
+    
     "SETTINGS": "Configurações",
     "LANGUAGE": "Idioma"
 }

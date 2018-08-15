@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController, AlertController } from 'ionic-angular';
+import { Component, AfterContentInit, AfterViewInit } from '@angular/core';
+import { IonicPage, NavController, NavParams, PopoverController, AlertController, Events } from 'ionic-angular';
 import { OpcoesObjetivoPage } from '../opcoes-objetivo/opcoes-objetivo';
 import { ObjetivoGeralPage } from '../objetivo-geral/objetivo-geral';
 import { ObjetivoCategoriaPage } from '../objetivo-categoria/objetivo-categoria';
+import { Meta } from '../../models/Meta';
 
 /**
  * @author Carlos W. Gama
@@ -15,24 +16,37 @@ import { ObjetivoCategoriaPage } from '../objetivo-categoria/objetivo-categoria'
 })
 export class ObjetivoPage {
 
-  meta: number = 1;
+  meta: Meta = new Meta();
   tabGeral = ObjetivoGeralPage;
   tabCategoria = ObjetivoCategoriaPage;
-  tabParams: {meta: number} = null;
+  tabParams: {meta: Meta} = null;
 
   
   constructor(public navCtrl: NavController, public navParams: NavParams,
-     private popoverCtrl: PopoverController, private alertCtrl: AlertController) {
+     private popoverCtrl: PopoverController, private alertCtrl: AlertController, private events: Events) {
   }
 
   ionViewDidLoad() {
-    this.tabParams = {meta: this.meta};
+    this.meta.initialize(this.navParams.get("meta"));
+    this.tabParams = this.navParams.data;
 
+    //Recupera das modificaçoes realizadas no ObjetivoGeral
+    this.events.subscribe("meta:atualiza", (meta) => {
+      this.meta.initialize(meta);
+      console.log("Atualiza Objetivo");
+    });
+    
+    //Ajuste de Bug do Ionic
+    setTimeout(() => {
+      this.events.publish("meta:inicia", this.meta);
+      console.log("Publica");
+    }, 100);
+    
     console.log('ionViewDidLoad ObjetivoPage');
   }
 
-  opcoes(event, meta) {
-    this.popoverCtrl.create(OpcoesObjetivoPage, {meta: meta}).present({ev: event});
+  opcoes(event) {
+    this.popoverCtrl.create(OpcoesObjetivoPage, {meta: this.meta}).present({ev: event});
   }
 
 }

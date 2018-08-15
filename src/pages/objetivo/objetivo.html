@@ -1,9 +1,9 @@
 <ion-header no-border>
   <ion-navbar>
-    <ion-title>Objetivo</ion-title>
+    <ion-title>{{ 'GOAL' | translate }}</ion-title>
     
     <ion-buttons end>
-      <button ion-button icon-only (click)="opcoes($event, meta)">
+      <button ion-button icon-only (click)="opcoes($event)">
         <ion-icon name="more"></ion-icon>
       </button>
     </ion-buttons>
@@ -11,6 +11,6 @@
 </ion-header>
 
 <ion-tabs selectedIndex="0" color="primary">
-  <ion-tab tabTitle="Geral" [root]="tabGeral" [rootParams]="tabParams" tabIcon="trending-up" ></ion-tab>
-  <ion-tab tabTitle="Categoria" [root]="tabCategoria" [rootParams]="tabParams" tabIcon="albums" ></ion-tab>
+  <ion-tab tabTitle="{{ 'GENERAL' | translate }}" [root]="tabGeral" [rootParams]="tabParams" tabIcon="trending-up" ></ion-tab>
+  <ion-tab tabTitle="{{ 'CATEGORY' | translate }}" [root]="tabCategoria" [rootParams]="tabParams" tabIcon="albums" ></ion-tab>
 </ion-tabs>

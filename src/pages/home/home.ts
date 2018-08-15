@@ -17,7 +17,7 @@ export class HomePage {
 
 
   totalInvestido = 0;
-  totalAlcancar = 0;
+  totalAlcancar:number = 0;
   porcentagem = 0;
   totalMetas = 0;
   metasAlcancada = 0;
@@ -52,11 +52,13 @@ export class HomePage {
       this.metas = metas;
       this.totalMetas = 0;
       this.metasAlcancada = 0;
-
+      this.totalAlcancar = 0;
+      this.totalInvestido = 0;
+      
       //Recupera os dados a serem preechidos
-      this.metas.forEach((meta) => {
-        this.totalAlcancar = meta.objetivo;
-        this.totalInvestido = meta.acumulado;
+      this.metas.forEach((meta: Meta) => {
+        this.totalAlcancar += meta.objetivo;
+        this.totalInvestido += meta.acumulado;
         this.totalMetas++;
         if (meta.acumulado >= meta.objetivo)
           this.metasAlcancada++;

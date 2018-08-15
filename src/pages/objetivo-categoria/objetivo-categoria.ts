@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { Meta } from '../../models/Meta';
 
 /**
  * @author Carlos W. Gama
@@ -12,14 +13,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ObjetivoCategoriaPage {
 
-  meta: any = 0;
+  meta: Meta = new Meta();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+  private events: Events) {
   }
 
   ionViewDidLoad() {
-    this.meta = this.navParams.get("meta") as number;
+    this.meta.initialize(this.navParams.get("meta"));
     console.log(this.meta);
+    this.events.subscribe("meta:atualiza", (meta) => {
+      this.meta.initialize(meta);
+    });
     console.log('ionViewDidLoad ObjetivoCategoriaPage');
   }
 
