@@ -7,11 +7,17 @@
     </ion-header>
     <ion-content padding-top>
         <ion-list no-lines>
-            <button ion-item *ngFor="let pagina of paginas" (click)="abrirPagina(pagina.page)" menuClose>
-                <ion-icon [name]="pagina.icon"></ion-icon> {{pagina.descricao}}
+            <!-- HOME -->
+            <button ion-item (click)="abrirPagina(pageHome)" menuClose>
+                <ion-icon name="checkbox"></ion-icon> {{ 'DASHBOARD' | translate }}
             </button>
+            <!-- CONFIGURACOES -->
+            <button ion-item (click)="abrirPagina(pageConfiguracoes)" menuClose>
+                    <ion-icon name="settings"></ion-icon> {{ 'SETTINGS' | translate }}
+                </button>
+            <!-- SAIR -->
             <button ion-item (click)="sair()" menuClose>
-                <ion-icon name="exit"></ion-icon> Sair
+                <ion-icon name="exit"></ion-icon> {{ 'QUIT' | translate }}
             </button>            
         </ion-list>
     </ion-content>

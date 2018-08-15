@@ -16,7 +16,7 @@ export class Meta {
      * @param membro 
      */
     addMembro(membro: Usuario): void {
-        if (this.membros.indexOf(membro) === -1)
+        if (this.membros.map((u) => u.email).indexOf(membro.email) === -1)
             this.membros.push(membro);
     }
 
@@ -31,11 +31,20 @@ export class Meta {
             this.objetivo = object.objetivo;
             this.acumulado = object.acumulado;
             this.temPrazo = object.temPrazo;
+
             this.prazo = object.prazo;
+            if (this.prazo == undefined) this.prazo = '';
+            
             this.frequencia = object.frequencia;
+            if (this.frequencia == undefined) this.frequencia = 1;
+            
             this.valorRecomendado = object.valorRecomendado;
+            if (this.valorRecomendado == undefined) this.valorRecomendado = 0;
+
             this.membros = object.membros;
+            
             this.transacoes = object.transacoes;
+            if (this.transacoes == undefined) this.transacoes = null;
         }
     }
 }

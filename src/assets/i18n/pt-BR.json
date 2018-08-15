@@ -9,6 +9,7 @@
     "BRIEF": "Resumo",
     "GOALS_REACHED": "Metas alcançadas",
     "INVESTIMENTS": "Investimentos",
+    "REMOVE_GOAL": "Você quer realmente deletar sua meta? Essa ação não pode ser desfeita",
 
     "AUTH_WEAK_PASSWORD":"Senha deve ter pelo menos 6 caracteres.",
     "AUTH_INVALID_EMAIL":"O email é inválido.",
@@ -17,7 +18,15 @@
     "AUTH_FAIL":"Ocorreu uma falha na autenticação",
     "AUTH_ALREADY_IN_USE": "Email já está sendo usado por outro usuário",
 
+    "REMOVE": "Remover",
+    "EDIT": "Editar",
+    "CANCEL": "Cancelars",
+    "OK": "OK",
     "SAVE": "Salvar",
+
+    "MENU": "Menu",
+    "DASHBOARD": "Dashboard",
+    "QUIT": "Quit",
 
     "EDIT_GOAL": "Editar Meta",
     "CREATE_GOAL": "Criar Meta",

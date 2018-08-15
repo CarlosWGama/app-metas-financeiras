@@ -1,6 +1,7 @@
 import { Injectable, ViewChild } from '@angular/core';
 import { Meta } from '../../models/Meta';
 import { Usuario } from '../../models/Usuario';
+import { Transacao } from '../../models/Transacao';
 
 declare var firebase;
 /**
@@ -47,9 +48,55 @@ export class MetaProvider {
    * @param meta Classe Meta
    */
   atualizar(meta: Meta) {
-    this.vinculaUsuario(meta);
 
+    this.vinculaUsuario(meta);
+    console.log(meta);
     this.ref.child(meta.id).set(meta);
+  }
+
+  /**
+   * Remove a meta informada
+   * @param meta 
+   */
+  removerMeta(meta:Meta) {
+    let usuarioID = firebase.auth().currentUser.uid;
+    let email = firebase.auth().currentUser.email;
+    let metaID = meta.id;
+
+    //Atualiza membros
+    let novosMembros = [];
+    meta.membros.forEach((membro: Usuario) => {
+      if (membro.uid != usuarioID) 
+        novosMembros.push(membro)
+    });
+    
+    if (novosMembros.length > 0) {
+      meta.membros = novosMembros;
+
+      if (meta.transacoes != undefined) {
+        //Atualiza transações
+        let total = 0;
+        let novasTransacoes: Transacao[] = [];
+        meta.transacoes.forEach((transacao) => {
+          if (transacao.autor != email) {
+            novasTransacoes.push(transacao);
+            total += (transacao.deposito ? transacao.valor : -transacao.deposito);
+          }
+        });
+          
+        meta.transacoes = novasTransacoes;
+        meta.acumulado = total;
+      }
+    } else 
+      meta = null; //Não tem nenhum membro
+    
+
+    this.ref.child(metaID).set(meta);
+
+    //Desvincula
+    this.refUM.child(usuarioID).child(metaID).set(null);
+
+
   }
 
   /**

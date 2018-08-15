@@ -21,10 +21,8 @@ declare var firebase;
 export class MyApp {
   rootPage:any;
 
-  paginas: {descricao: string, icon: string, page: any}[] = [
-    {descricao: 'Dashboard', icon: 'checkbox', page: HomePage},
-    {descricao: 'Configurações', icon: 'settings', page: ConfiguracoesPage}
-  ];
+  pageHome = HomePage;
+  pageConfiguracoes = ConfiguracoesPage;
 
   @ViewChild('nav')
   nav: NavController;

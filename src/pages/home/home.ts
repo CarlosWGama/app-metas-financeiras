@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, MenuController } from 'ionic-angular';
+import { NavController, AlertController, MenuController, LoadingController } from 'ionic-angular';
 import { ObjetivoEdicaoPage } from '../objetivo-edicao/objetivo-edicao';
 import { ObjetivoPage } from '../objetivo/objetivo';
 import { Meta } from '../../models/Meta';
 import { MetaProvider } from '../../providers/meta/meta';
+import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 
 declare var firebase;
 @Component({
@@ -21,15 +22,36 @@ export class HomePage {
   totalMetas = 0;
   metasAlcancada = 0;
 
+  //Conteudos de tradução
+  transBtnCancelar;
+  transBtnOK;
+  transMsgDeletar;
+
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, 
-    private menuCtrl: MenuController, private metaProvider: MetaProvider) {
+    private menuCtrl: MenuController, private metaProvider: MetaProvider,
+    private translate: TranslateService, private loadCtrl: LoadingController) {
 
   }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+    this.atualizaMetas();
+    this.translate.get("CANCEL").toPromise().then((msg) => this.transBtnCancelar = msg);
+    this.translate.get("OK").toPromise().then((msg) => this.transBtnOK = msg);
+    this.translate.get("REMOVE_GOAL").toPromise().then((msg) => this.transMsgDeletar = msg);
+  }
+
+  /**
+   * Aatualiza a lista de metas sempre que é chamado
+   */
+  private atualizaMetas() {
+    let loading = this.loadCtrl.create({enableBackdropDismiss: true});
+    loading.present();
+
     this.metaProvider.buscarTodos(firebase.auth().currentUser.uid).then((metas) => {
       this.metas = metas;
+      this.totalMetas = 0;
+      this.metasAlcancada = 0;
 
       //Recupera os dados a serem preechidos
       this.metas.forEach((meta) => {
@@ -42,32 +64,48 @@ export class HomePage {
 
       if (this.totalAlcancar > 0)
         this.porcentagem = parseInt(((this.totalInvestido * 100) / this.totalAlcancar).toFixed(0));
+      
+        loading.dismiss();
     });
   }
 
+  /**
+   * Abre uma meta
+   * @param meta 
+   */
   abrir(meta) {
     this.navCtrl.push(ObjetivoPage, {meta: meta});
   }
 
+  /**
+   * Cria uma nova Meta
+   */
   novo() {
     this.navCtrl.push(ObjetivoEdicaoPage, {meta: new Meta()});
   }
 
+  /**
+   * Edita a meta existente
+   */
   editar(meta) {
     this.navCtrl.push(ObjetivoEdicaoPage, {meta: meta});
   }
 
+  /**
+   * Apaga uma meta do usuário
+   */
   remover(meta) { 
-    this.alertCtrl.create({
-      message: 'Você realmente deseja remover essa meta?',
-      buttons: [
-        {text: "Cancelar", role: 'cancel'},
-        {text: "Ok", handler:() => {
-          let index = this.metas.indexOf(meta);
-          this.metas.splice(index, 1);
-        }}
-      ]
-    }).present(); 
+      this.alertCtrl.create({
+        message: this.transMsgDeletar,
+        buttons: [
+          {text: this.transBtnCancelar, role: 'cancel'},
+          {text: this.transBtnOK, handler:() => {
+            this.metaProvider.removerMeta(meta);
+            this.atualizaMetas();
+          }}
+        ]
+      }).present();
+     
   }
 
 }
