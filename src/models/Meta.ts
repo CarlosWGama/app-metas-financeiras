@@ -51,16 +51,22 @@ export class Meta {
      * Recupera transações ordenadas por usuário
      */
     get transacoesPorUsuario() {
-        let transacoes: {usuario: string, transacoes: Transacao[]}[] = [];
+        let transacoes: {usuario: string, total: number, transacoes: Transacao[]}[] = [];
 
         this.transacoes.forEach((transacao) => {
             //Checa de um grupo já foi criados
             let index = transacoes.map((t) => { return t.usuario}).indexOf(transacao.usuario);
             
-            if (index === -1) //Cria um novo grupo 
-                transacoes.push({usuario: transacao.usuario, transacoes: [transacao]});
-            else //adiciona no grupo atual
+            if (index === -1) { //Cria um novo grupo 
+                transacoes.push({
+                    usuario: transacao.usuario, 
+                    total: (transacao.deposito ? transacao.valor : - transacao.valor ), 
+                    transacoes: [transacao]
+                });
+            } else { //adiciona no grupo atual
                 transacoes[index].transacoes.push(transacao);
+                transacoes[index].total += (transacao.deposito ? transacao.valor : - transacao.valor );
+            }
         });
         return transacoes;
     }

@@ -89,12 +89,36 @@ export class MetaProvider {
     } else 
       meta = null; //Não tem nenhum membro
     
-
+    //Atualiza meta
     this.ref.child(metaID).set(meta);
 
     //Desvincula
     this.refUM.child(usuarioID).child(metaID).set(null);
-    
+  }
+
+  /**
+   * Remove uma transação existente
+   * @param meta 
+   * @param transacao 
+   */
+  removerTransacao(meta: Meta, transacao: Transacao): Meta {
+
+    //Atualiza transações
+    let total = 0;
+    let novasTransacoes: Transacao[] = [];
+    meta.transacoes.forEach((t) => {
+      if (t.id != transacao.id) {
+        novasTransacoes.push(t);
+        total += (t.deposito ? t.valor : -t.deposito);
+      }
+    });
+      
+    meta.transacoes = novasTransacoes;
+    meta.acumulado = total;
+
+    this.ref.child(meta.id).set(meta);
+
+    return meta;
   }
 
   /**

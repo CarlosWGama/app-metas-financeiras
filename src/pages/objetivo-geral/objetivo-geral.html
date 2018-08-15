@@ -9,7 +9,7 @@
   <div id="resumo">
       <h2>{{meta.titulo}}</h2>
       <h4>Meta: {{meta.objetivo}}</h4>
-      <h4>Alcançado: {{ meta.acumulado }} ({{  (meta.acumulado * 100)/meta.objetivo }}%)</h4>
+      <h4>Alcançado: {{ meta.acumulado }} ({{  ((meta.acumulado * 100)/meta.objetivo).toFixed(2) }}%)</h4>
   </div>
   <!-- [FIM] RESUMO -->
 
@@ -18,7 +18,7 @@
         <!-- USUARIO -->
         <ion-list-header>
           <h2 class="usuario-lista">{{ metasUsuario.usuario }}</h2> 
-          <p class="usuario-contribuicao">Total: 10000</p>
+          <p class="usuario-contribuicao">Total: {{ metasUsuario.total }}</p>
         </ion-list-header>
         
         <!-- HISTORICO -->

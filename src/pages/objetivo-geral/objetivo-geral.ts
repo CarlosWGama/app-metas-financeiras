@@ -103,7 +103,7 @@ export class ObjetivoGeralPage {
 
                   //Cria meta
                   let uid = new Date().getUTCMilliseconds().toString();
-                  let transacao = new Transacao(uid, firebase.auth().currentUser.email, isDeposito, data.valor, data.data, data.categoria);
+                  let transacao = new Transacao(uid, firebase.auth().currentUser.email, isDeposito, Number(data.valor), data.data, data.categoria);
                   console.log(transacao);
                   this.meta.transacoes.push(transacao);
                   this.atualizaMeta();
@@ -120,7 +120,7 @@ export class ObjetivoGeralPage {
   private atualizaMeta() {
     this.meta.acumulado = 0;
     this.meta.transacoes.forEach((transacao) => {
-      this.meta.acumulado += Number(transacao.deposito ? transacao.valor : -transacao.valor);
+      this.meta.acumulado += (transacao.deposito ? transacao.valor : -transacao.valor);
     });
     this.metaProvider.atualizar(this.meta);
     this.events.publish("meta:atualizar", this.meta);
@@ -147,7 +147,7 @@ export class ObjetivoGeralPage {
       buttons: [
         {text:this.transBtnCancelar, role: "cancel"},
         {text:this.transBtnOk, handler:() => {
-          
+          this.meta = this.metaProvider.removerTransacao(this.meta, transacao);
         }}
       ]
     }).present();   
