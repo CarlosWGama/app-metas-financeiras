@@ -18,6 +18,15 @@ export class ObjetivoEdicaoPage {
 
   meta: Meta = new Meta();
 
+  //traduções
+  transAdicionarMembroInfo;
+  transAdicionarMembro;
+  transBtnAdicionar;
+  transBtnCancelar;
+  transBtnOk;
+  transErro;
+  transMetaSalva;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private toastCtrl: ToastController, private alertCtrl: AlertController,
     private usuarioProvider: UsuarioProvider, private loadingCtrl: LoadingController,
@@ -25,6 +34,15 @@ export class ObjetivoEdicaoPage {
   }
 
   ionViewDidLoad() {
+    this.translate.get("ADD_MEMBER").toPromise().then((msg) => { this.transAdicionarMembro = msg });
+    this.translate.get("ADD_MEMBER_INFO").toPromise().then((msg) => { this.transAdicionarMembroInfo = msg });
+    this.translate.get("ERROR").toPromise().then((msg) => this.transErro = msg);
+    this.translate.get("OK").toPromise().then((msg) => this.transBtnOk = msg);
+    this.translate.get("ADD").toPromise().then((msg) => this.transBtnAdicionar = msg);
+    this.translate.get("CANCEL").toPromise().then((msg) => this.transBtnCancelar = msg);
+    this.translate.get("GOAL_SAVED").toPromise().then((msg) => { this.transMetaSalva = msg });
+
+
     this.meta.initialize(this.navParams.get("meta") as Meta);
     if (this.meta == null) this.meta = new Meta();
     this.usuarioProvider.getUsuarioByEmail(firebase.auth().currentUser.email).then((usuario: Usuario) => {
@@ -35,21 +53,24 @@ export class ObjetivoEdicaoPage {
     console.log('ionViewDidLoad ObjetivoEdicaoPage');
   }
 
+  /**
+   * Adiciona um novo membro a meta
+   */
   adicionarMembro() {
     this.alertCtrl.create({
-      title:"Adicionar membro",
-      message: "Apenas usuários do Minhas Metas Financeiras podem ser adicionados. Uma vez adicionado, apenas o próprio usuário poderá pedir para sair da meta",
+      title:this.transAdicionarMembro,
+      message: this.transAdicionarMembroInfo,
       inputs:[
-        {name: "email", type:"email", placeholder: "Informe o email do usuário"}
+        {name: "email", type:"email", placeholder: "E-mail"}
       ], 
       buttons: [
-        {text: "Cancelar", role: "cancel"},
-        {text: "Adicionar", handler:(dados) => {
+        {text: this.transBtnCancelar, role: "cancel"},
+        {text: this.transBtnAdicionar, handler:(dados) => {
           if (dados.email == "") {
             this.translate.get("INVALID_EMAIL").toPromise().then((msg) => { this.chamarAlerta(msg) });
           } else {
 
-            let load = this.loadingCtrl.create({content: "Aguarde", enableBackdropDismiss: false});
+            let load = this.loadingCtrl.create({enableBackdropDismiss: false});
             load.present();
             this.usuarioProvider.getUsuarioByEmail(dados.email).then((usuario) => {
               if (usuario != null) {
@@ -74,12 +95,15 @@ export class ObjetivoEdicaoPage {
    */
   private chamarAlerta(mensagem: string) {
     this.alertCtrl.create({
-      title: "Erro",
+      title: this.transErro,
       message: mensagem,
-      buttons: ["Ok"]
+      buttons: [this.transBtnOk]
     }).present();
   }
 
+  /**
+   * Define o valor recomendado para deposito de cada usuário
+   */
   recomendado() {
     let resta = this.meta.objetivo - this.meta.acumulado;
     if (resta <= 0)
@@ -114,7 +138,7 @@ export class ObjetivoEdicaoPage {
       }
 
       this.toastCtrl.create({
-        message: "Meta salva com sucesso",
+        message: this.transMetaSalva,
         duration: 3000
       }).present();
       this.navCtrl.pop();

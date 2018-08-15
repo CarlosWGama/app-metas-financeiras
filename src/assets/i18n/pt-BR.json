@@ -1,5 +1,4 @@
 {
-    
     "SIGN_UP": "CADASTRAR",
     "SIGN_IN": "Logar",
     "LOGIN": "Login",
@@ -23,12 +22,23 @@
     "CANCEL": "Cancelars",
     "OK": "OK",
     "SAVE": "Salvar",
+    "ADD": "Adicionar",
+    "ERROR": "Erro",
 
     "MENU": "Menu",
     "DASHBOARD": "Dashboard",
     "QUIT": "Quit",
 
     "GENERAL": "Geral",
+    "ADD_TRANSACTION": "Adicionar uma transação",
+    "DEPOSIT": "Deposito",
+    "WITHDRAW": "Saque",
+    "AMOUNT_TRANSACTION": "Valor da transação",
+    "CATEGORY_INFO": "Categoria (Opcional): Poupança, ação...",
+    "REMOVE_TRANSACTION": "Você realmente quer remover essa transação?",
+    "AMOUNT_REQUIRED": "Valor é obrigatório",
+    "DATE_REQUIRED": "Data é obrigatória",
+
     "CATEGORY": "Categoria",
 
     "EDIT_GOAL": "Editar Meta",
@@ -46,6 +56,8 @@
     "NEXT_DEPOSIT_RECOMMENDATION": "Valor aproximado recomendado por período",
     "MEMBERS": "Membros",
     "ADD_MEMBER": "Adicionar membro",
+    "ADD_MEMBER_INFO": "Apenas usuários do Minhas Metas Financeiras podem ser adicionados. Uma vez adicionado, apenas o próprio usuário poderá pedir para sair da meta",
+    "GOAL_SAVED": "Meta salva com sucesso",
 
     "DAYLY": "Diário",
     "WEEKLY": "Semanal",

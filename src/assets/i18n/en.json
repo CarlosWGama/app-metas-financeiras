@@ -1,5 +1,4 @@
 {
-    
     "SIGN_UP": "SIGN-UP",
     "SIGN_IN": "SIGN-IN",
     "LOGIN": "Login",
@@ -10,7 +9,6 @@
     "GOALS_REACHED": "Goals Reached",
     "INVESTIMENTS": "Investiments",
     "REMOVE_GOAL": "Do you really want remove your goal? This action can't be undone",
-
 
     "AUTH_WEAK_PASSWORD":"Password should be at least 6 characters",
     "AUTH_INVALID_EMAIL":"The email address is badly formatted.",
@@ -24,12 +22,23 @@
     "CANCEL": "Cancel",
     "OK": "OK",
     "SAVE": "SAVE",
+    "ADD": "Add",
+    "ERROR": "Error",
 
     "MENU": "Menu",
     "DASHBOARD": "Dashboard",
     "QUIT": "Quit",
 
     "GENERAL": "General",
+    "ADD_TRANSACTION": "Add a Transaction",
+    "DEPOSIT": "Deposit",
+    "WITHDRAW": "Withdraw",
+    "AMOUNT_TRANSACTION": "Amount to transaction",
+    "CATEGORY_INFO": "Category (Optional)",
+    "REMOVE_TRANSACTION": "Do you really want remove this transaction?",
+    "AMOUNT_REQUIRED": "Amount is required",
+    "DATE_REQUIRED": "Date is required",
+
     "CATEGORY": "Category",
 
     "EDIT_GOAL": "Edit Goal",
@@ -47,6 +56,8 @@
     "NEXT_DEPOSIT_RECOMMENDATION": "Next recommendated value on deposit ",
     "MEMBERS": "Members",
     "ADD_MEMBER": "Add a member",
+    "ADD_MEMBER_INFO": "Only users of My Finance's Goals can be added. When this user has been added to the goal, just he can remove yourself",
+    "GOAL_SAVED": "Goal was saved successfully",
 
     "DAYLY": "Dialy",
     "WEEKLY": "Weekly",
