@@ -57,8 +57,9 @@ export class HomePage {
       
       //Recupera os dados a serem preechidos
       this.metas.forEach((meta: Meta) => {
-        this.totalAlcancar += meta.objetivo;
-        this.totalInvestido += meta.acumulado;
+        console.log(meta);
+        this.totalAlcancar += (meta.objetivo);
+        this.totalInvestido += (meta.acumulado);
         this.totalMetas++;
         if (meta.acumulado >= meta.objetivo)
           this.metasAlcancada++;

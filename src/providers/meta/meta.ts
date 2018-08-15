@@ -77,7 +77,7 @@ export class MetaProvider {
         let total = 0;
         let novasTransacoes: Transacao[] = [];
         meta.transacoes.forEach((transacao) => {
-          if (transacao.autor != email) {
+          if (transacao.usuario != email) {
             novasTransacoes.push(transacao);
             total += (transacao.deposito ? transacao.valor : -transacao.deposito);
           }
@@ -115,7 +115,9 @@ export class MetaProvider {
           return Promise.all(promises).then((snapshots) => {
             let metas: Meta[] = [];
             snapshots.forEach((res) => {
-              metas.push(res.val() as Meta);
+              let novaMeta:Meta = new Meta();
+              novaMeta.initialize(res.val());
+              metas.push(novaMeta);
             })
             return metas;
           });

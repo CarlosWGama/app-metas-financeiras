@@ -14,32 +14,31 @@
   <!-- [FIM] RESUMO -->
 
   <ion-list>
-      <div *ngFor="let usuario of ['carloswgama@gmail.com', 'mylanagama@gmail.com']">
+      <div *ngFor="let metasUsuario of meta.transacoesPorUsuario">
         <!-- USUARIO -->
         <ion-list-header>
-          <h2 class="usuario-lista">{{ usuario }}</h2> 
+          <h2 class="usuario-lista">{{ metasUsuario.usuario }}</h2> 
           <p class="usuario-contribuicao">Total: 10000</p>
         </ion-list-header>
         
         <!-- HISTORICO -->
-        <ion-item-sliding *ngFor="let isDeposit of [true, false, true]">
+        <ion-item-sliding *ngFor="let transacao of metasUsuario.transacoes">
         
           <!-- DESCRIÇÃO -->
           <ion-item>
             <ion-thumbnail item-start >
-              
-              <img [src]="'../../assets/imgs/'+(isDeposit ? 'deposit':'withdraw')+'.png'">
+              <img [src]="'../../assets/imgs/'+(transacao.deposito ? 'deposit':'withdraw')+'.png'">
             </ion-thumbnail>
-            <h2 [ngClass]="{'deposit': isDeposit, 'withdraw': !isDeposit}">{{ (isDeposit ? '+' : '-')}} $$$ 1000</h2>
-            <p>{{ '2018-08-10' | dataBrasil }}</p>
-            <p>Ações</p>  
+            <h2 [ngClass]="{'deposit': transacao.deposito, 'withdraw': !transacao.deposito}">{{ (transacao.deposito ? '+' : '-')}} $$$ {{ transacao.valor }}</h2>
+            <p>{{ transacao.data | dataBrasil }}</p>
+            <p *ngIf="transacao.categoria != undefinied && transacao.categoria != ''">{{ transacao.categoria }}</p>  
           </ion-item>
 
           <!-- OPCÕES -->
-          <ion-item-options side="right" *ngIf="usuario == 'carloswgama@gmail.com'">
+          <ion-item-options side="right" *ngIf="metasUsuario.usuario == usuario">
             <button ion-button color="danger" (click)="remover(transacao)">
               <ion-icon name="trash"></ion-icon>
-              Remover
+              {{ 'REMOVE' | translate }}
             </button>
           </ion-item-options>
         </ion-item-sliding>

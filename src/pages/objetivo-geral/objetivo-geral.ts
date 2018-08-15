@@ -1,9 +1,11 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Events } from 'ionic-angular';
 import { Meta } from '../../models/Meta';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 import { Transacao } from '../../models/Transacao';
+import { MetaProvider } from '../../providers/meta/meta';
 
+declare var firebase;
 /**
  * @author Carlos W. Gama
  */
@@ -15,6 +17,8 @@ import { Transacao } from '../../models/Transacao';
 export class ObjetivoGeralPage {
 
   meta: Meta = new Meta();
+
+  usuario;
 
   //Conteudos de tradução
   transBtnCancelar;
@@ -30,10 +34,12 @@ export class ObjetivoGeralPage {
   transCategoriaInfo;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-    private alertCtrl: AlertController, private events: Events, private translate: TranslateService) {
+    private alertCtrl: AlertController, private events: Events, private translate: TranslateService,
+    private metaProvider: MetaProvider) {
   }
 
   ionViewDidLoad() {    
+    this.usuario = firebase.auth().currentUser.email;
     //Ajuste de Bug do Ionic
     this.events.subscribe("meta:inicia", (meta) => {
       this.meta.initialize(meta);
@@ -70,7 +76,8 @@ export class ObjetivoGeralPage {
         {text: this.transBtnCancelar, role: 'cancel'},
         {text: this.transBtnAdicionar, handler: (data) => {
 
-          let isDeposito = data;
+          console.log(data);
+          let isDeposito:boolean = (data == 'true');
 
           this.alertCtrl.create({
               enableBackdropDismiss: false,
@@ -78,7 +85,7 @@ export class ObjetivoGeralPage {
               inputs: [
                 {name: 'valor', type:'number',  placeholder: this.transValorTransacao},
                 {name: 'data', type:'date'},
-                {name: 'data', type:'text', placeholder:this.transCategoriaInfo}
+                {name: 'categoria', type:'text', placeholder:this.transCategoriaInfo}
               ], 
               buttons:[
                 {text: this.transBtnCancelar, role: 'cancel'},
@@ -91,8 +98,15 @@ export class ObjetivoGeralPage {
               
                   if (data.data == "" ||data.data == undefined ) {
                     this.translate.get("DATE_REQUIRED").toPromise().then((msg) => { this.chamarAlerta(msg) });
-                    return false;
+                    return;
                   }
+
+                  //Cria meta
+                  let uid = new Date().getUTCMilliseconds().toString();
+                  let transacao = new Transacao(uid, firebase.auth().currentUser.email, isDeposito, data.valor, data.data, data.categoria);
+                  console.log(transacao);
+                  this.meta.transacoes.push(transacao);
+                  this.atualizaMeta();
                 }}
               ] 
             }).present();
@@ -101,6 +115,15 @@ export class ObjetivoGeralPage {
         }}
       ] 
     }).present();
+  }
+
+  private atualizaMeta() {
+    this.meta.acumulado = 0;
+    this.meta.transacoes.forEach((transacao) => {
+      this.meta.acumulado += Number(transacao.deposito ? transacao.valor : -transacao.valor);
+    });
+    this.metaProvider.atualizar(this.meta);
+    this.events.publish("meta:atualizar", this.meta);
   }
 
   /**

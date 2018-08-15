@@ -33,6 +33,7 @@ export class ObjetivoPage {
     //Recupera das modificaçoes realizadas no ObjetivoGeral
     this.events.subscribe("meta:atualiza", (meta) => {
       this.meta.initialize(meta);
+      this.tabParams = {meta: this.meta};
       console.log("Atualiza Objetivo");
     });
     

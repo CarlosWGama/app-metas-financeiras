@@ -6,7 +6,7 @@
  */
 export class Transacao {
 
-    constructor(public id: string, public autor: string, public deposito: boolean, public valor: number, public categoria?: string) {
+    constructor(public id: string, public usuario: string, public deposito: boolean, public valor: number, public data:string, public categoria?: string) {
 
     }
 
