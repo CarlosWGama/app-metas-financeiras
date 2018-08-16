@@ -19,6 +19,7 @@ import { HttpClient, HttpClientModule } from '../../node_modules/@angular/common
 import { createTranslateLoader } from '../util/createTranslateLoader';
 import { UsuarioProvider } from '../providers/usuario/usuario';
 import { MetaProvider } from '../providers/meta/meta';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { MetaProvider } from '../providers/meta/meta';
     MetaProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioProvider,
-    MetaProvider
+    MetaProvider,
+    AdMobFree
   ]
 })
 export class AppModule {}

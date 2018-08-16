@@ -5,6 +5,7 @@ import { ObjetivoPage } from '../objetivo/objetivo';
 import { Meta } from '../../models/Meta';
 import { MetaProvider } from '../../providers/meta/meta';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
+import { AdMobFree } from '@ionic-native/admob-free';
 
 declare var firebase;
 @Component({
@@ -29,8 +30,19 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, 
     private menuCtrl: MenuController, private metaProvider: MetaProvider,
-    private translate: TranslateService, private loadCtrl: LoadingController) {
+    private translate: TranslateService, private loadCtrl: LoadingController, 
+    private admobFree: AdMobFree) {
 
+  }
+
+  ionViewDidLoad() {
+     //Propaganda
+     this.admobFree.banner.config({
+      isTesting: true,
+      autoShow: true,
+      id: 'ca-app-pub-8890411738087560/2702346234'
+    });
+    this.admobFree.banner.prepare();
   }
 
   ionViewWillEnter() {
