@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, MenuController, LoadingController } from 'ionic-angular';
+import { NavController, AlertController, MenuController, LoadingController, Platform } from 'ionic-angular';
 import { ObjetivoEdicaoPage } from '../objetivo-edicao/objetivo-edicao';
 import { ObjetivoPage } from '../objetivo/objetivo';
 import { Meta } from '../../models/Meta';
@@ -31,18 +31,20 @@ export class HomePage {
   constructor(public navCtrl: NavController, private alertCtrl: AlertController, 
     private menuCtrl: MenuController, private metaProvider: MetaProvider,
     private translate: TranslateService, private loadCtrl: LoadingController, 
-    private admobFree: AdMobFree) {
+    private admobFree: AdMobFree, private plataform: Platform) {
 
   }
 
   ionViewDidLoad() {
-     //Propaganda
-     this.admobFree.banner.config({
-      isTesting: true,
-      autoShow: true,
-      id: 'ca-app-pub-8890411738087560/2702346234'
-    });
-    this.admobFree.banner.prepare();
+    if (!this.plataform.is('core') && !this.plataform.is('mobileweb')) {
+      //Propaganda
+      this.admobFree.banner.config({
+        isTesting: true,
+        autoShow: true,
+        id: 'ca-app-pub-8890411738087560/2702346234'
+      });
+      this.admobFree.banner.prepare();
+    }
   }
 
   ionViewWillEnter() {

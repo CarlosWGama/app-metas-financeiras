@@ -54,9 +54,12 @@ export class MyApp {
     // Cordova Carregado, já pode usar recursos nativos
     platform.ready().then(() => {
 
-      //Trava a camera em modo retrato
-      screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
-      
+      if (!platform.is('core') && !platform.is('mobileweb')) {  
+        //Trava a camera em modo retrato
+        screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);
+      }
+
+
       statusBar.styleDefault();
       splashScreen.hide();
     });
