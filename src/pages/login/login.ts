@@ -65,7 +65,7 @@ export class LoginPage {
    * Metodo responsável por realizar o login com o Facebook
    */
   loginFacebook() {
-    var provider = new firebase.auth.FacebookAuthProvider();
+    /*var provider = new firebase.auth.FacebookAuthProvider();
     
     firebase.auth().signInWithRedirect(provider).then(function() {
       return firebase.auth().getRedirectResult();
@@ -80,14 +80,14 @@ export class LoginPage {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-    });
+    });*/
   }
 
   /**
    * Metodo responsável por realizar o login com o Google
    */
   loginGoogle() {
-    var provider = new firebase.auth.GoogleAuthProvider();
+    /*var provider = new firebase.auth.GoogleAuthProvider();
     
     firebase.auth().signInWithRedirect(provider).then(function() {
       return firebase.auth().getRedirectResult();
@@ -102,7 +102,7 @@ export class LoginPage {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-    });
+    });*/
   }
 
    /**
