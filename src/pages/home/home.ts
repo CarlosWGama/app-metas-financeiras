@@ -38,7 +38,7 @@ export class HomePage {
   ionViewDidLoad() {
      //Propaganda
      this.admobFree.banner.config({
-      isTesting: true,
+      isTesting: false,
       autoShow: true,
       id: 'ca-app-pub-8890411738087560/2702346234'
     });
