@@ -17,8 +17,7 @@ declare var firebase;
 })
 export class LoginPage {
 
-  login: string = "";
-  senha: string = "";
+  usuario: {login: string, senha: string} = {login: "", senha: ""};
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
       private alertCtrl: AlertController, private menuCtrl: MenuController,
@@ -37,7 +36,7 @@ export class LoginPage {
    * Metodo responsável por realizar o login com email e senha
    */
   logar(): void {
-    firebase.auth().signInWithEmailAndPassword(this.login, this.senha).then(() => {
+    firebase.auth().signInWithEmailAndPassword(this.usuario.login, this.usuario.senha).then(() => {
       this.atualizarEmailMenu();
       this.navCtrl.setRoot(HomePage);
     }).catch((error) => {

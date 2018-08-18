@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { DataBrasilPipe } from './data-brasil/data-brasil';
+import { DinheiroPipe } from './dinheiro/dinheiro';
 @NgModule({
-	declarations: [DataBrasilPipe],
+	declarations: [DataBrasilPipe,
+    DinheiroPipe],
 	imports: [],
-	exports: [DataBrasilPipe]
+	exports: [DataBrasilPipe,
+    DinheiroPipe]
 })
 export class PipesModule {}
