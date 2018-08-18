@@ -8,7 +8,7 @@
   <ion-list>
     <ion-item *ngFor="let cat of meta.categorias ">
       <h2>{{ cat.categoria }} </h2>
-      <p>Investido: $$$ {{ cat.total }} </p>
+      <p>Investido: $$$ {{ cat.total | dinheiro }} </p>
     </ion-item>
   </ion-list>
 </ion-content>

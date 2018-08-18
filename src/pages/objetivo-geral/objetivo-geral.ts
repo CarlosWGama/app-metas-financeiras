@@ -32,6 +32,7 @@ export class ObjetivoGeralPage {
   transErro;
   transValorTransacao;
   transCategoriaInfo;
+  transValorRecomendado;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
     private alertCtrl: AlertController, private events: Events, private translate: TranslateService,
@@ -57,7 +58,8 @@ export class ObjetivoGeralPage {
     this.translate.get("AMOUNT_TRANSACTION").toPromise().then((msg) => this.transValorTransacao = msg);
     this.translate.get("CATEGORY_INFO").toPromise().then((msg) => this.transCategoriaInfo = msg);
     this.translate.get("REMOVE_TRANSACTION").toPromise().then((msg) => this.transMsgRemoverTransacao = msg);
-  
+    this.translate.get("NEXT_DEPOSIT_RECOMMENDATION").toPromise().then((msg) => this.transValorRecomendado = msg);
+
   }
   
   /**
@@ -82,9 +84,10 @@ export class ObjetivoGeralPage {
           this.alertCtrl.create({
               enableBackdropDismiss: false,
               title: this.transAdicionarTransacao,
+              message: this.transValorRecomendado + ": " + this.meta.valorRecomendado,
               inputs: [
-                {name: 'valor', type:'number',  placeholder: this.transValorTransacao},
-                {name: 'data', type:'date'},
+                {name: 'valor', type:'number',  placeholder: this.transValorTransacao, value: this.meta.valorRecomendado.toString()},
+                {name: 'data', type:'date', value: new Date().toISOString().split('T')[0]},
                 {name: 'categoria', type:'text', placeholder:this.transCategoriaInfo}
               ], 
               buttons:[

@@ -9,7 +9,7 @@ declare var firebase;
  */
 export class Meta {
 
-    constructor(public id: string = '', public titulo: string = '', public objetivo: number = 0, public acumulado:number = 0, public temPrazo: boolean = false, public prazo?: string, public frequencia: number = Frequencia.DIARIA, public valorRecomendado: number = 0, public membros: Usuario[] = [], public transacoes: Transacao[] = []) {
+    constructor(public id: string = '', public titulo: string = '', public objetivo: number = 0, public acumulado:number = 0, public temPrazo: boolean = false, public prazo: string = new Date().toISOString().split('T')[0], public frequencia: number = Frequencia.DIARIA, public valorRecomendado: number = 0, public membros: Usuario[] = [], public transacoes: Transacao[] = []) {
     }
 
     /**

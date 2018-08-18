@@ -8,8 +8,8 @@
   <!-- RESUMO -->
   <div id="resumo">
       <h2>{{meta.titulo}}</h2>
-      <h4>{{ 'GOAL' | translate }}: {{meta.objetivo}}</h4>
-      <h4>{{ 'CURRENT' | translate }}: {{ meta.acumulado }} ({{  ((meta.acumulado * 100)/meta.objetivo).toFixed(2) }}%)</h4>
+      <h4>{{ 'GOAL' | translate }}: {{meta.objetivo  | dinheiro}}</h4>
+      <h4>{{ 'CURRENT' | translate }}: {{ meta.acumulado | dinheiro }} ({{  ((meta.acumulado * 100)/meta.objetivo).toFixed(2) }}%)</h4>      
   </div>
   <!-- [FIM] RESUMO -->
 
@@ -18,7 +18,7 @@
         <!-- USUARIO -->
         <ion-list-header>
           <h2 class="usuario-lista">{{ metasUsuario.usuario }}</h2> 
-          <p class="usuario-contribuicao">Total: {{ metasUsuario.total }}</p>
+          <p class="usuario-contribuicao">Total: {{ metasUsuario.total | dinheiro }}</p>
         </ion-list-header>
         
         <!-- HISTORICO -->
@@ -29,7 +29,7 @@
             <ion-thumbnail item-start >
               <img [src]="'../../assets/imgs/'+(transacao.deposito ? 'deposit':'withdraw')+'.png'">
             </ion-thumbnail>
-            <h2 [ngClass]="{'deposit': transacao.deposito, 'withdraw': !transacao.deposito}">{{ (transacao.deposito ? '+' : '-')}} $$$ {{ transacao.valor }}</h2>
+            <h2 [ngClass]="{'deposit': transacao.deposito, 'withdraw': !transacao.deposito}">{{ (transacao.deposito ? '+' : '-')}} $$$ {{ transacao.valor | dinheiro }}</h2>
             <p>{{ transacao.data | dataBrasil }}</p>
             <p *ngIf="transacao.categoria != undefinied && transacao.categoria != ''">{{ transacao.categoria }}</p>  
           </ion-item>

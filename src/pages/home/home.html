@@ -10,7 +10,7 @@
     <div id="resumo">
       <h2>{{ 'BRIEF' | translate }}</h2>
       <h4>{{ 'GOALS_REACHED' | translate }}: {{ metasAlcancada }} ({{ totalMetas }})</h4>
-      <h4>{{ 'INVESTIMENTS' | translate }}: {{ totalInvestido }} ({{ totalAlcancar }})</h4>
+      <h4>{{ 'INVESTIMENTS' | translate }}: {{ totalInvestido | dinheiro }} ({{ totalAlcancar | dinheiro }})</h4>
       <h4>{{ porcentagem }}%</h4>
     </div>
 
@@ -23,7 +23,7 @@
     
       <ion-card-content (click)="abrir(meta)">
           <progress-bar [max]="meta.objetivo" [atual]="meta.acumulado"></progress-bar>
-          ({{meta.acumulado}} / {{meta.objetivo}})
+          ({{meta.acumulado | dinheiro }} / {{meta.objetivo | dinheiro}})
       </ion-card-content>
     
       <ion-row>
