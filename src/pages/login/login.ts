@@ -49,7 +49,7 @@ export class LoginPage {
    */
   cadastrar(): void {
     //Realiza o cadastro no Firebase
-    firebase.auth().createUserWithEmailAndPassword(this.login, this.senha).then(() => {
+    firebase.auth().createUserWithEmailAndPassword(this.usuario.login, this.usuario.senha).then(() => {
       this.atualizarEmailMenu();
       let user = firebase.auth().currentUser;
       this.usuarioProvider.cadastrar(user.uid, user.email);
