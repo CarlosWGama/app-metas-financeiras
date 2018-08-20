@@ -1,10 +1,16 @@
 {
     "APP_TITLE": "Minhas metas financeiras  (Beta)",
 
+    "VERSION": "Versão",
+
     "SIGN_UP": "CADASTRAR",
     "SIGN_IN": "Logar",
     "LOGIN": "Login",
     "PASSWORD": "Senha",
+    "FORGOT_PASSOWRD": "Esqueceu sua senha?",
+    "RESET_PASSWORD": "Resete sua senha",
+    "MSG_RESET_PASSWORD": "Informe seu email",
+    "RESET_EMAIL_SEND": "Um e-mail foi enviado para sua caixa de email",
 
     "MY_GOALS": "Meus Objetivos",
     "BRIEF": "Resumo",
@@ -21,7 +27,7 @@
 
     "REMOVE": "Remover",
     "EDIT": "Editar",
-    "CANCEL": "Cancelars",
+    "CANCEL": "Cancelar",
     "OK": "OK",
     "SAVE": "Salvar",
     "ADD": "Adicionar",

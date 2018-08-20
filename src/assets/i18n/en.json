@@ -1,10 +1,16 @@
 {
     "APP_TITLE": "My Finance's Goals (Beta)",
 
+    "VERSION": "Version",
+
     "SIGN_UP": "SIGN-UP",
     "SIGN_IN": "SIGN-IN",
     "LOGIN": "Login",
     "PASSWORD": "Password",
+    "FORGOT_PASSOWRD": "Forgot your password?",
+    "RESET_PASSWORD": "Reset your password",
+    "MSG_RESET_PASSWORD": "Enter your emails",
+    "RESET_EMAIL_SEND": "A email was send to your mailbox",
 
     "MY_GOALS": "My Goals",
     "BRIEF": "Brief",
