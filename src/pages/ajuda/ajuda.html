@@ -1,0 +1,76 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>{{ 'HELP' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-list>
+    <!-- PERGUNTA1 -->
+    <ion-item text-wrap (click)="toggle(descricao1)">
+      <h2 class="pergunta"> {{ 'QUESTION1' | translate }} </h2>
+      <p class="descricao" #descricao1>{{ 'ANSWER1' | translate }}</p>
+    </ion-item>
+
+    <!-- PERGUNTA2 -->
+    <ion-item text-wrap (click)="toggle(descricao2)">
+      <h2 class="pergunta"> {{ 'QUESTION2' | translate }} </h2>
+      <p class="descricao" #descricao2>{{ 'ANSWER2' | translate }}</p>
+    </ion-item>
+
+    <!-- PERGUNTA3 -->
+    <ion-item text-wrap (click)="toggle(descricao3)">
+      <h2 class="pergunta"> {{ 'QUESTION3' | translate }} </h2>
+      <p class="descricao" #descricao3>{{ 'ANSWER3' | translate }}</p>
+    </ion-item>
+
+    <!-- PERGUNTA4 -->
+    <ion-item text-wrap (click)="toggle(descricao4)">
+      <h2 class="pergunta"> {{ 'QUESTION4' | translate }} </h2>
+      <p class="descricao" #descricao4> {{ 'ANSWER4' | translate }} </p>
+    </ion-item>
+
+    <!-- PERGUNTA5 -->
+    <ion-item text-wrap (click)="toggle(descricao5)">
+      <h2 class="pergunta"> {{ 'QUESTION5' | translate }} </h2>
+      <p class="descricao" #descricao5> {{ 'ANSWER5' | translate }} </p>
+    </ion-item>
+
+    <!-- PERGUNTA6 -->
+    <ion-item text-wrap (click)="toggle(descricao6)">
+      <h2 class="pergunta"> {{ 'QUESTION6' | translate }} </h2>
+      <p class="descricao" #descricao6> {{ 'ANSWER6' | translate }}  </p>
+    </ion-item>
+
+    <!-- PERGUNTA7 -->
+    <ion-item text-wrap (click)="toggle(descricao7)">
+      <h2 class="pergunta"> {{ 'QUESTION7' | translate }} </h2>
+      <p class="descricao" #descricao7> {{ 'ANSWER7' | translate }} </p>
+    </ion-item>
+
+    <!-- PERGUNTA8 -->
+    <ion-item text-wrap (click)="toggle(descricao8)">
+      <h2 class="pergunta"> {{ 'QUESTION8' | translate }} </h2>
+      <p class="descricao" #descricao8> {{ 'ANSWER8' | translate }} </p>
+    </ion-item>
+
+    <!-- PERGUNTA9 -->
+    <ion-item text-wrap (click)="toggle(descricao9)">
+      <h2 class="pergunta"> {{ 'QUESTION9' | translate }} </h2>
+      <p class="descricao" #descricao9> {{ 'ANSWER9' | translate }} </p>
+    </ion-item>
+
+    <!-- PERGUNTA10 -->
+    <ion-item text-wrap (click)="toggle(descricao10)">
+      <h2 class="pergunta">{{ 'QUESTION10' | translate }}</h2>
+      <p class="descricao" #descricao10>{{ 'ANSWER10' | translate }} </p>
+    </ion-item>
+
+
+  </ion-list>
+</ion-content>

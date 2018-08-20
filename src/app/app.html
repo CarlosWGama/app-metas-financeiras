@@ -3,6 +3,7 @@
         <ion-toolbar id="drawer-menu-header" style="background-image: linear-gradient(to right bottom, #43e97b 0%, #38f9d7 100%) !important;">
             <ion-title>Menu</ion-title>
             <p id="login"> {{ email }} </p>
+            <p id="versao"> {{ 'VERSION' | translate }} {{ versao }} </p>
         </ion-toolbar>
     </ion-header>
     <ion-content padding-top>
@@ -13,8 +14,12 @@
             </button>
             <!-- CONFIGURACOES -->
             <button ion-item (click)="abrirPagina(pageConfiguracoes)" menuClose>
-                    <ion-icon name="settings"></ion-icon> {{ 'SETTINGS' | translate }}
-                </button>
+                <ion-icon name="settings"></ion-icon> {{ 'SETTINGS' | translate }}
+            </button>
+            <!-- AJUDA -->
+            <button ion-item (click)="abrirPagina(pageAjuda)" menuClose>
+                <ion-icon name="help"></ion-icon> {{ 'HELP' | translate }}
+            </button>
             <!-- SAIR -->
             <button ion-item (click)="sair()" menuClose>
                 <ion-icon name="exit"></ion-icon> {{ 'QUIT' | translate }}

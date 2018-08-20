@@ -10,6 +10,8 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { TranslateService } from '../../node_modules/@ngx-translate/core';
+import { AppConfig } from '../models/AppConfig';
+import { AjudaPage } from '../pages/ajuda/ajuda';
 
 
 declare var firebase;
@@ -24,6 +26,9 @@ export class MyApp {
 
   pageHome = HomePage;
   pageConfiguracoes = ConfiguracoesPage;
+  pageAjuda = AjudaPage;
+  
+  versao = AppConfig.VERSAO;
 
   @ViewChild('nav')
   nav: NavController;

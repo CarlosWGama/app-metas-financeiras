@@ -18,6 +18,7 @@
   </ion-list>
   <button ion-button full round (click)="logar()" color="light">{{ 'SIGN_IN' | translate }}</button>
   <button ion-button outline round block (click)="cadastrar()" color="light">{{ 'SIGN_UP' | translate }}</button>
+  <p id="reset_password" (click)="resetarSenha()"> {{ 'FORGOT_PASSOWRD' | translate }} </p>
   <br/>
   
 
@@ -40,5 +41,7 @@
     </ion-row>
   
   </ion-grid>
+
+  <p id="versao"> {{ 'VERSION' | translate }} {{ versao }}</p>
 
 </ion-content>

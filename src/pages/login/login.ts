@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, MenuController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, MenuController, Events, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
+import { AppConfig } from '../../models/AppConfig';
 
 //Serve para chamar a API do Firebase 
 declare var firebase;
@@ -19,16 +20,29 @@ export class LoginPage {
 
   usuario: {login: string, senha: string} = {login: "", senha: ""};
 
+  versao = AppConfig.VERSAO;
+
+  transResetTitle: string;
+  transResetMsg: string;
+  transResetEmailEnviado: string;
+  transBtnOk;
+  transBtnCancelar;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, 
       private alertCtrl: AlertController, private menuCtrl: MenuController,
     public translate: TranslateService, private events: Events,
-    private usuarioProvider: UsuarioProvider) {
+    private usuarioProvider: UsuarioProvider, private toastCtrl: ToastController) {
   }
   
   /**
    * Configurações iniciais 
    */
   ionViewDidLoad() {
+    this.translate.get("RESET_PASSWORD").toPromise().then((msg) => this.transResetTitle = msg );
+    this.translate.get("MSG_RESET_PASSWORD").toPromise().then((msg) => this.transResetMsg = msg );
+    this.translate.get("RESET_EMAIL_SEND").toPromise().then((msg) => this.transResetEmailEnviado = msg );
+    this.translate.get("OK").toPromise().then((msg) => this.transBtnOk = msg );
+    this.translate.get("CANCEL").toPromise().then((msg) => this.transBtnCancelar = msg );
     this.menuCtrl.enable(false);
   }
 
@@ -58,6 +72,30 @@ export class LoginPage {
       console.log(error);
       this.chamarErro(error.code);
     });
+  }
+
+  /**
+   * Método responsável por enviar um email para resetar a senha do usuário
+   */
+  resetarSenha() {
+    this.alertCtrl.create({
+      title: this.transResetTitle,
+      inputs: [{name: 'email', placeholder: this.transResetMsg, type: 'email'}],
+      enableBackdropDismiss: false,
+      buttons: [
+        {text: this.transBtnCancelar },
+        {text: this.transBtnOk, handler: (data) => {
+          firebase.auth().sendPasswordResetEmail(data.email).then(() => {
+            this.toastCtrl.create({
+              duration: 3000,
+              message: this.transResetEmailEnviado
+            }).present();
+          }).catch((error) => {
+            this.chamarErro(error.code);
+          });
+        }}
+      ]
+    }).present();
   }
 
   /**

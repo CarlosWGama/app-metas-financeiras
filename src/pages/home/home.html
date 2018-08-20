@@ -18,7 +18,7 @@
     <ion-card *ngFor="let meta of metas">
       <ion-item (click)="abrir(meta)">
         <h2>{{ meta.titulo }}</h2>
-        <p *ngIf="meta.temPrazo">Prazo: {{ meta.prazo | dataBrasil }}</p>
+        <p *ngIf="meta.temPrazo">{{ 'DEADLINE' | translate }}: {{ meta.prazo | dataBrasil }}</p>
       </ion-item>
     
       <ion-card-content (click)="abrir(meta)">
