@@ -5,3 +5,4 @@
 Correções:
     - Adicionando visualização da versão
     - Recuperar senha
+    - Adicionar página de ajuda 

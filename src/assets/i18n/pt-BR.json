@@ -35,7 +35,7 @@
 
     "MENU": "Menu",
     "DASHBOARD": "Dashboard",
-    "QUIT": "Quit",
+    "QUIT": "Sair",
 
     "GENERAL": "Geral",
     "CURRENT": "Valor atual",
@@ -77,5 +77,28 @@
     "ALERT_GOAL_REMOVED": "Objetivo removido",
     
     "SETTINGS": "Configurações",
-    "LANGUAGE": "Idioma"
+    "LANGUAGE": "Idioma",
+
+    "HELP": "Ajuda",
+    "QUESTION1": "01 - O que é o Minhas Metas Financeiras?",
+    "ANSWER1": "Minhas Metas Financeiras é um aplicativo para te ajudar a alcançar a suas metas financeiras, seja sozinho ou acompanhado de alguém",
+    "QUESTION2": "02 - Eu faço investimento no aplicativo?",
+    "ANSWER2": "Não, o aplicativo não é um local para investir, apenas para ir acompanhando o quanto você tem juntando ou investido, organizando-os em metas. Como uma forma de organizar melhor seus investimentos, como também saber para que é aquele valor que você investiu em umaa ação por exemplo.",
+    "QUESTION3": "03 - Como faço para criar uma meta?",
+    "ANSWER3": "Na seção principal (Dashboard), poderá criar sua meta ao clicar no ícone + ",
+    "QUESTION4": "04 - O que é o valor recomendado que aparece na criação ou edição da meta?",
+    "ANSWER4": "Para te ajudar a alcançar sua meta, ao definir um prazo e uma frequencia que deseja investir, o aplicativo irá recomendar um valor que cada usuário deverá investir naquele periodo para alcançar o objetivo dentro do prazo",
+    "QUESTION5": "05 - Posso adicionar quantas pessoas a minha meta?",
+    "ANSWER5": "Quantas pessoas quiser, desde que estejam também no aplicativo",
+    "QUESTION6": "06 - Posso remover um usuário da minha meta?",
+    "ANSWER6": "Não, apenas o próprio usuário pode solicitar a sua saída",
+    "QUESTION7": "07 - O que acontece quando um usuário remove uma meta que possui outros membros?",
+    "ANSWER7": "Apenas as transações do usuário será removida. As transações dos demais usuários irão permanecer",
+    "QUESTION8": "08 - Como cadastro uma transação?",
+    "ANSWER8": "Após ter sua meta criada, basta clicar nela no dashboard e na nova terá poderá acommpanhar todas movimentações dos usuários naquela meta. Ao clicar no icone '+' poderá adicionar um deposito ou saque seu realizado",
+    "QUESTION9": "09 - Posso remover uma transação que adicionei acidentalmente?",
+    "ANSWER9": "Sim, arrastando a transação para a esquerda, aparecerá a opção de deletar transação. Mas apenas poderá deletar as suas próprias transações",
+    "QUESTION10": "10 - O que são as categorias nas transações?",
+    "ANSWER10": "É uma forma de você lembrar e acompanhar aonde estão os seus investimentos daquela meta. Assim saberá quanto de dinheiro daquela meta está investido em ações a ou b, fundos, poupança ou tesouro."
+
 }

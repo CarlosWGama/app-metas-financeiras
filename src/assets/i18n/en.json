@@ -62,7 +62,7 @@
     "HAS_DEADLINE": "Does goal have a deadline?",
     "DEADLINE": "Deadline",
     "FREQUENCE_DEPOSIT": "Frequence of deposit",
-    "NEXT_DEPOSIT_RECOMMENDATION": "Next recommendated value on deposit ",
+    "NEXT_DEPOSIT_RECOMMENDATION": "Next recommendated amount on deposit ",
     "MEMBERS": "Members",
     "ADD_MEMBER": "Add a member",
     "ADD_MEMBER_INFO": "Only users of My Finance's Goals can be added. When this user has been added to the goal, just he can remove yourself",
@@ -77,5 +77,28 @@
     "ALERT_GOAL_REMOVED": "Goal removed",
 
     "SETTINGS": "Settings",
-    "LANGUAGE": "LANGUAGE"
+    "LANGUAGE": "LANGUAGE",
+
+    "HELP": "Help",
+    "QUESTION1": "01 - What is the My Finance's Goals?",
+    "ANSWER1": "My Finance's Goals is a app created to help you reach your finance's goals by yourself or together with another person",
+    "QUESTION2": "02 - Have I to do deposit on My Finance's Goals?",
+    "ANSWER2": "No, the app is not a place to do investments, it only a tools to help you to keep track of how much you have gathered or invested to reach a goal. As a way to organize it is better to invest, but also know what amount you have invested in an shares for example",
+    "QUESTION3": "03 - How can I do to create a goal?",
+    "ANSWER3": "At main section (Dashboard), you could create your goal, just click in icon '+' ",
+    "QUESTION4": "04 - What is the 'Next recommendated amount on deposit' on create ou edit a goal?",
+    "ANSWER4": "For help you reach your goal, when you defined a deadline, frequence to deposit and your amount to gather, the app'll recomend a amount for you and another members deposit to reach this goal until the deadline",
+    "QUESTION5": "05 - How many person can I add on my goal?",
+    "ANSWER5": "How many you want, since them are users of My Finance's Goals too",
+    "QUESTION6": "06 - Could I remove a member of my goal?",
+    "ANSWER6": "No, only this member could remove yourself of a goal",
+    "QUESTION7": "07 - What is happen, when a member remove yourself of a goal, and this goal has another members?",
+    "ANSWER7": "Only the transactions of this member'll be removed of the goal. The others transactions'll be keep on the goal",
+    "QUESTION8": "08 - How could I add a transaction of deposit or withdraw?",
+    "ANSWER8": "After create your goal, you'll could click on this goal at dashboard. In this page you could track your goal and add new transaction on clicking icon '+'",
+    "QUESTION9": "09 - Could I remove a transaction of my goal?",
+    "ANSWER9": "Yes,  on sliding a transaction to left, the option of remove, it'll show up. But you could only remove your own transactions",
+    "QUESTION10": "10 - What are the categories in the transactions?",
+    "ANSWER10": "It is a way for you to remember and track where your investments that from this goal. Thus you will know how much of that goal money is invested shares, funds, savings or treasury."
+
 }
