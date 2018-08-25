@@ -21,6 +21,7 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
 import { MetaProvider } from '../providers/meta/meta';
 import { AdMobFree } from '@ionic-native/admob-free';
 import { AjudaPageModule } from '../pages/ajuda/ajuda.module';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { AjudaPageModule } from '../pages/ajuda/ajuda.module';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UsuarioProvider,
     MetaProvider,
-    AdMobFree
+    AdMobFree,
+    GooglePlus
   ]
 })
 export class AppModule {}

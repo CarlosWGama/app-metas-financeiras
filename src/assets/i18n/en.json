@@ -11,6 +11,7 @@
     "RESET_PASSWORD": "Reset your password",
     "MSG_RESET_PASSWORD": "Enter your emails",
     "RESET_EMAIL_SEND": "A email was send to your mailbox",
+    "OR": "OR",
 
     "MY_GOALS": "My Goals",
     "BRIEF": "Brief",

@@ -5,6 +5,23 @@
     <h1 id="title">{{ 'APP_TITLE' | translate }}</h1>
   </div>
 
+
+  <ion-grid>
+    
+    <!-- REDES SOCIAIS -->
+    <ion-row >
+      <ion-col col-12>
+          <button ion-button block round (click)="loginGoogle()" color="googleplus"><ion-icon name="logo-google"></ion-icon></button>
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col col-5><hr/></ion-col>
+      <ion-col col-2 text-center>{{ 'OR' | translate }}</ion-col>
+      <ion-col col-5><hr/></ion-col>
+    </ion-row>
+
+  </ion-grid> 
   <!-- LOGAR -->
   <ion-list>
     <ion-item>
@@ -20,27 +37,6 @@
   <button ion-button outline round block (click)="cadastrar()" color="light">{{ 'SIGN_UP' | translate }}</button>
   <p id="reset_password" (click)="resetarSenha()"> {{ 'FORGOT_PASSOWRD' | translate }} </p>
   <br/>
-  
-
-  <ion-grid *ngIf="false">
-    <ion-row>
-      <ion-col col-5><hr/></ion-col>
-      <ion-col col-2 text-center>OU</ion-col>
-      <ion-col col-5><hr/></ion-col>
-    </ion-row>
-  
-    <!-- REDES SOCIAIS -->
-    <ion-row >
-      <ion-col col-6>
-          <button ion-button block outline round (click)="loginFacebook()" color="light"><ion-icon name="logo-facebook"></ion-icon></button>
-      </ion-col>
-
-      <ion-col col-6>
-          <button ion-button block outline round (click)="loginGoogle()" color="light"><ion-icon name="logo-google"></ion-icon></button>
-      </ion-col>
-    </ion-row>
-  
-  </ion-grid>
 
   <p id="versao"> {{ 'VERSION' | translate }} {{ versao }}</p>
 
