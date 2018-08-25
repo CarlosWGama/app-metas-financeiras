@@ -39,7 +39,7 @@ export class HomePage {
     if (!this.plataform.is('core') && !this.plataform.is('mobileweb')) {
       //Propaganda
       this.admobFree.banner.config({
-        isTesting: false,
+        isTesting: true,
         autoShow: true,
         id: 'ca-app-pub-8890411738087560/2702346234'
       });
