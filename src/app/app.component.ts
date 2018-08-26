@@ -13,6 +13,7 @@ import { TranslateService } from '../../node_modules/@ngx-translate/core';
 import { AppConfig } from '../models/AppConfig';
 import { AjudaPage } from '../pages/ajuda/ajuda';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { UsuarioProvider } from '../providers/usuario/usuario';
 
 
 declare var firebase;
@@ -38,7 +39,8 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, 
     splashScreen: SplashScreen, screenOrientation: ScreenOrientation, 
-    private translate: TranslateService, private storage: Storage, private events: Events, private googlePlus: GooglePlus) {
+    private translate: TranslateService, private storage: Storage, private events: Events,
+    private googlePlus: GooglePlus, private usuarioProvider: UsuarioProvider) {
 
     //Escolhe o idioma
     this.storage.get('idioma').then((val) => {
@@ -53,6 +55,7 @@ export class MyApp {
       if (user) {
         this.nav.setRoot(HomePage);
         this.email = firebase.auth().currentUser.email;
+        this.usuarioProvider.cadastrar(firebase.auth().currentUser.uid, firebase.auth().currentUser.email);
       } else 
         this.nav.setRoot(LoginPage);
     });

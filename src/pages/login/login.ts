@@ -68,7 +68,7 @@ export class LoginPage {
     firebase.auth().createUserWithEmailAndPassword(this.usuario.login, this.usuario.senha).then(() => {
       this.atualizarEmailMenu();
       let user = firebase.auth().currentUser;
-      this.usuarioProvider.cadastrar(user.uid, user.email);
+      //this.usuarioProvider.cadastrar(user.uid, user.email);
       this.navCtrl.setRoot(HomePage);
     }).catch((error) => {
       console.log(error);
@@ -114,7 +114,7 @@ export class LoginPage {
       }).then(res => {   
         firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
         .then((result) => {
-          this.usuarioProvider.cadastrar(result.user.uid, result.user.email);
+          //this.usuarioProvider.cadastrar(result.user.uid, result.user.email);
           this.atualizarEmailMenu();
           this.navCtrl.setRoot(HomePage);
         }).catch((error) => {
@@ -126,7 +126,7 @@ export class LoginPage {
     
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider).then((result) => {
-        this.usuarioProvider.cadastrar(result.user.uid, result.user.email);
+        //this.usuarioProvider.cadastrar(result.user.uid, result.user.email);
         this.atualizarEmailMenu();
         this.navCtrl.setRoot(HomePage);
       }).catch((error) => {
