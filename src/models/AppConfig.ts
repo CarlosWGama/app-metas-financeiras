@@ -4,5 +4,5 @@
  */
 export class AppConfig {
 
-    static readonly VERSAO: string = '0.3.3';
+    static readonly VERSAO: string = '0.3.4';
 }
