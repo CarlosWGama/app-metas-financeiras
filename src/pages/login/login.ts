@@ -106,7 +106,8 @@ export class LoginPage {
   loginGoogle() {
 
     //Login Nativo
-    if (!this.plataform.is('core') && !this.plataform.is('mobileweb')) {
+    if (!this.plataform.is('core') && !this.plataform.is('mobileweb') && !document.URL.startsWith("http://metasfinanceiras.carloswgama.com.br")) {
+      console.log("Login Nativo");
       this.googlePlus.login({
         'webClientId': '321841158263-5tu9202t26ac77bom3njsaqepf8e1c7r.apps.googleusercontent.com',
         'offline': true,
@@ -123,7 +124,7 @@ export class LoginPage {
       });
 
     } else { //Login pela web
-    
+      console.log("Login Web");
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider).then((result) => {
         //this.usuarioProvider.cadastrar(result.user.uid, result.user.email);
