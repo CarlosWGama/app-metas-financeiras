@@ -111,16 +111,16 @@ export class LoginPage {
         'webClientId': '321841158263-5tu9202t26ac77bom3njsaqepf8e1c7r.apps.googleusercontent.com',
         'offline': true,
         'scopes': 'profile email'
-      }).then(res => {      
-        firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credencial(res.idToken))
+      }).then(res => {   
+        firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
         .then((result) => {
           this.atualizarEmailMenu();
           this.navCtrl.setRoot(HomePage);
         }).catch((error) => {
           this.chamarErro(error.code);
         }); 
-
       });
+
     } else { //Login pela web
     
       var provider = new firebase.auth.GoogleAuthProvider();
@@ -132,8 +132,6 @@ export class LoginPage {
         this.chamarErro(error.code);
       }); 
     }
-
-  
   }
 
    /**

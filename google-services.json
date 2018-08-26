@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "321841158263",
+    "firebase_url": "https://cwg-apps.firebaseio.com",
+    "project_id": "cwg-apps",
+    "storage_bucket": "cwg-apps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321841158263:android:136ef30b890a7591",
+        "android_client_info": {
+          "package_name": "br.com.carloswgama.metasfinanceiras"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "321841158263-sncqqase0nslml8kjfm3v1nup5vea6b8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.carloswgama.metasfinanceiras",
+            "certificate_hash": "d7bb89d91c133d3feebae233abbe18dd9242df36"
+          }
+        },
+        {
+          "client_id": "321841158263-5tu9202t26ac77bom3njsaqepf8e1c7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFSABM9U525LPMm8LxB6AuroyRHqnYQZA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "321841158263-5tu9202t26ac77bom3njsaqepf8e1c7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

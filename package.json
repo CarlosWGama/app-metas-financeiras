@@ -1,6 +1,6 @@
 {
   "name": "minhas-metas-financeiras",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "Carlos W. Gama",
   "homepage": "http://carloswgama.com.br/",
   "private": true,
@@ -32,13 +32,14 @@
     "@ngx-translate/http-loader": "^3.0.1",
     "cordova-admob-sdk": "^0.17.0",
     "cordova-android": "7.0.0",
+    "cordova-android-play-services-gradle-release": "^1.4.3",
     "cordova-browser": "5.0.4",
     "cordova-plugin-admob-free": "^0.17.4",
     "cordova-plugin-browsertab": "^0.2.0",
     "cordova-plugin-buildinfo": "^2.0.1",
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^2.0.2",
-    "cordova-plugin-googleplus": "^5.3.0",
+    "cordova-plugin-googleplus": "^5.1.1",
     "cordova-plugin-inappbrowser": "^3.0.0",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.0.3",
@@ -73,10 +74,18 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-googleplus": {
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.5tu9202t26ac77bom3njsaqepf8e1c7r",
+        "WEB_APPLICATION_CLIENT_ID": "321841158263-5tu9202t26ac77bom3njsaqepf8e1c7r.apps.googleusercontent.com"
+      },
+      "cordova-android-play-services-gradle-release": {
+        "PLAY_SERVICES_VERSION": "10.+"
+      }
     },
     "platforms": [
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }
