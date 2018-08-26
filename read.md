@@ -1,6 +1,6 @@
 # Minhas Metas Financeiras
 
-## Verão 0.3.1
+## Verão 0.3.2
 
 Correções:
-    - Login com Google
+    - Bug do login com Google Plus (não salvar dados)
