@@ -12,6 +12,7 @@ import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
 import { TranslateService } from '../../node_modules/@ngx-translate/core';
 import { AppConfig } from '../models/AppConfig';
 import { AjudaPage } from '../pages/ajuda/ajuda';
+import { GooglePlus } from '@ionic-native/google-plus';
 
 
 declare var firebase;
@@ -37,7 +38,7 @@ export class MyApp {
 
   constructor(platform: Platform, statusBar: StatusBar, 
     splashScreen: SplashScreen, screenOrientation: ScreenOrientation, 
-    private translate: TranslateService, private storage: Storage, private events: Events) {
+    private translate: TranslateService, private storage: Storage, private events: Events, private googlePlus: GooglePlus) {
 
     //Escolhe o idioma
     this.storage.get('idioma').then((val) => {
@@ -87,6 +88,7 @@ export class MyApp {
    * Realiza o logout do aplicativo
    */
   sair(): void {
+    this.googlePlus.logout();
     firebase.auth().signOut().then(() => {
       this.nav.setRoot(LoginPage);
     });
