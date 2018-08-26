@@ -114,6 +114,7 @@ export class LoginPage {
       }).then(res => {   
         firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
         .then((result) => {
+          this.usuarioProvider.cadastrar(firebase.auth().currentUser.email.uid, firebase.auth().currentUser.email.email);
           this.atualizarEmailMenu();
           this.navCtrl.setRoot(HomePage);
         }).catch((error) => {
