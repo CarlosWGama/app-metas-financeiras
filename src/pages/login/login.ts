@@ -114,7 +114,7 @@ export class LoginPage {
       }).then(res => {   
         firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
         .then((result) => {
-          this.usuarioProvider.cadastrar(firebase.auth().currentUser.email.uid, firebase.auth().currentUser.email.email);
+          this.usuarioProvider.cadastrar(result.user.uid, result.user.email);
           this.atualizarEmailMenu();
           this.navCtrl.setRoot(HomePage);
         }).catch((error) => {
@@ -126,6 +126,7 @@ export class LoginPage {
     
       var provider = new firebase.auth.GoogleAuthProvider();
       firebase.auth().signInWithPopup(provider).then((result) => {
+        this.usuarioProvider.cadastrar(result.user.uid, result.user.email);
         this.atualizarEmailMenu();
         this.navCtrl.setRoot(HomePage);
       }).catch((error) => {
