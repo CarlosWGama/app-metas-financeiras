@@ -8,8 +8,19 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
   <ion-list>
+    <!-- ATUALIZAR SENHA -->
+    <ion-item *ngIf="logadoEmailSenha">
+      <ion-label fixed text-wrap>{{ 'NEW_PASSWORD' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="logadoEmailSenha">
+      <ion-label fixed text-wrap>{{ 'CONFIRM_NEW_PASSWORD' | translate }}</ion-label>
+      <ion-input type="password" [(ngModel)]="senha2"></ion-input>
+    </ion-item>
+    <!-- TRADUÇÂO -->
     <ion-item>
       <ion-label>{{ 'LANGUAGE' | translate }}: </ion-label>
       <ion-select [(ngModel)]="idioma" >

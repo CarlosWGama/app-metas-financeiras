@@ -1,6 +1,6 @@
 # Minhas Metas Financeiras
 
-## Verão 0.3.5
+## Verão 0.4.0
 
 Melhorias:
     - Ordernar transações em ordem decrescente

@@ -25,7 +25,8 @@
     "AUTH_NOT_FOUND":"There is no user record corresponding to this identifier. The user may have been deleted.",
     "AUTH_FAIL":"Unexpected failure in authentication.",
     "AUTH_ALREADY_IN_USE": "The email address is already in use by another account.",
-    
+    "AUTH_RECENT_LOGIN": "Your credential is too old. Please sign in again to do this operation in security.",
+
     "REMOVE": "Remove",
     "EDIT": "Edit",
     "CANCEL": "Cancel",
@@ -80,6 +81,10 @@
 
     "SETTINGS": "Settings",
     "LANGUAGE": "LANGUAGE",
+    "NEW_PASSWORD": "New Password",
+    "CONFIRM_NEW_PASSWORD": "Confirm New Password",
+    "ERROR_PASSWORD_CONFIRM": "Password and Confirm Password not match",
+    "PASSWORD_UPDATED": "Password has been updated",
 
     "HELP": "Help",
     "QUESTION1": "01 - What is the My Finance's Goals?",

@@ -5,6 +5,7 @@ import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 import { UsuarioProvider } from '../../providers/usuario/usuario';
 import { AppConfig } from '../../models/AppConfig';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { LoginValidation } from '../LoginValidation';
 
 //Serve para chamar a API do Firebase 
 declare var firebase;
@@ -17,7 +18,7 @@ declare var firebase;
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage extends LoginValidation {
 
   usuario: {login: string, senha: string} = {login: "", senha: ""};
 
@@ -30,10 +31,11 @@ export class LoginPage {
   transBtnCancelar;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, 
-      private alertCtrl: AlertController, private menuCtrl: MenuController,
-    public translate: TranslateService, private events: Events,
+      alertCtrl: AlertController, private menuCtrl: MenuController,
+    translate: TranslateService, private events: Events,
     private usuarioProvider: UsuarioProvider, private toastCtrl: ToastController,
     private googlePlus: GooglePlus, private plataform: Platform) {
+      super(translate, alertCtrl);
   }
   
   /**
@@ -135,43 +137,6 @@ export class LoginPage {
         this.chamarErro(error.code);
       }); 
     }
-  }
-
-   /**
-   * Exibe uma mensagem de erro para o usuário
-   * @param erro código do erro enviado pelo Firebase
-   */
-  private chamarErro(erro): void {
- 
-    switch(erro) {
-      case "auth/invalid-email": 
-        this.translate.get("AUTH_INVALID_EMAIL").toPromise().then((msg) => { this.chamarAlerta(msg) });
-        break;
-      case "auth/user-not-found":
-        this.translate.get("AUTH_NOT_FOUND").toPromise().then((msg) => { this.chamarAlerta(msg) });
-        break; 
-      case "auth/weak-password":
-        this.translate.get("AUTH_WEAK_PASSWORD").toPromise().then((msg) => { this.chamarAlerta(msg) });
-        break;
-      case "auth/wrong-password":
-        this.translate.get("AUTH_WRONG_PASSWORD").toPromise().then((msg) => { this.chamarAlerta(msg) });
-        break;
-      case "auth/email-already-in-use":
-      this.translate.get("AUTH_ALREADY_IN_USE").toPromise().then((msg) => { this.chamarAlerta(msg) });
-      break;
-      default:
-        this.translate.get("AUTH_FAIL").toPromise().then((msg) => { this.chamarAlerta(msg) });
-    }
-  }
-  /**
-   * Cria um Alerte padrão para envio de mensagens
-   * @param mensagem mensagem a ser enviada para o alerta
-   */
-  private chamarAlerta(mensagem: string): void {
-    this.alertCtrl.create({
-      message: mensagem,
-      buttons: ["Ok"]
-    }).present();
   }
 
   /**

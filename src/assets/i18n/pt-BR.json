@@ -25,6 +25,7 @@
     "AUTH_NOT_FOUND":"Não foi encontrado nenhum usuário com este email.",
     "AUTH_FAIL":"Ocorreu uma falha na autenticação",
     "AUTH_ALREADY_IN_USE": "Email já está sendo usado por outro usuário",
+    "AUTH_RECENT_LOGIN": "Seu ultimo login faz tempo. Para realizar essa operação com segurança, logue-se de novo",
 
     "REMOVE": "Remover",
     "EDIT": "Editar",
@@ -80,6 +81,10 @@
     
     "SETTINGS": "Configurações",
     "LANGUAGE": "Idioma",
+    "NEW_PASSWORD": "Nova senha",
+    "CONFIRM_NEW_PASSWORD": "Confirme nova senha",
+    "ERROR_PASSWORD_CONFIRM": "Senha e confirmação estão diferentes",
+    "PASSWORD_UPDATED": "Senha atualizada",
 
     "HELP": "Ajuda",
     "QUESTION1": "01 - O que é o Minhas Metas Financeiras?",
