@@ -67,8 +67,14 @@ export class Meta {
             } else { //adiciona no grupo atual
                 transacoes[index].transacoes.push(transacao);
                 transacoes[index].total += (transacao.deposito ? transacao.valor : - transacao.valor );
+           
+                //ordernar 
+                transacoes[index].transacoes.sort((a, b) => {
+                    return a.valor - b.valor;
+                });
             }
-        });
+        });  
+       
         return transacoes;
     }
 

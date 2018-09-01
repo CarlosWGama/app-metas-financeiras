@@ -1,6 +1,7 @@
 # Minhas Metas Financeiras
 
-## Verão 0.3.4
+## Verão 0.3.5
 
-Correções:
-    - Bug do login com Google Plus (não salvar dados)
+Melhorias:
+    - Ordernar transações em ordem decrescente
+    - Adicionado opção de editar transação 

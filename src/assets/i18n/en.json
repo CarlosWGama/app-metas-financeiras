@@ -41,6 +41,7 @@
     "GENERAL": "General",
     "CURRENT": "Current",
     "ADD_TRANSACTION": "Add a Transaction",
+    "EDIT_TRANSACTION": "Edit a Transaction",
     "DEPOSIT": "Deposit",
     "WITHDRAW": "Withdraw",
     "AMOUNT_TRANSACTION": "Amount to transaction",

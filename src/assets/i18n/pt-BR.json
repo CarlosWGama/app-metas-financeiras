@@ -41,6 +41,7 @@
     "GENERAL": "Geral",
     "CURRENT": "Valor atual",
     "ADD_TRANSACTION": "Adicionar uma transação",
+    "EDIT_TRANSACTION": "Editar uma transação",
     "DEPOSIT": "Deposito",
     "WITHDRAW": "Saque",
     "AMOUNT_TRANSACTION": "Valor da transação",

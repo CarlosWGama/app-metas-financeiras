@@ -27,6 +27,7 @@ export class ObjetivoGeralPage {
   transValor;
   transBtnAdicionar;
   transAdicionarTransacao;
+  transEditarTransacao;
   transDeposito;
   transSaque;
   transErro;
@@ -55,11 +56,11 @@ export class ObjetivoGeralPage {
     this.translate.get("DEPOSIT").toPromise().then((msg) => this.transDeposito = msg);
     this.translate.get("WITHDRAW").toPromise().then((msg) => this.transSaque = msg);
     this.translate.get("ADD_TRANSACTION").toPromise().then((msg) => this.transAdicionarTransacao = msg);
+    this.translate.get("EDIT_TRANSACTION").toPromise().then((msg) => this.transEditarTransacao = msg);
     this.translate.get("AMOUNT_TRANSACTION").toPromise().then((msg) => this.transValorTransacao = msg);
     this.translate.get("CATEGORY_INFO").toPromise().then((msg) => this.transCategoriaInfo = msg);
     this.translate.get("REMOVE_TRANSACTION").toPromise().then((msg) => this.transMsgRemoverTransacao = msg);
     this.translate.get("NEXT_DEPOSIT_RECOMMENDATION").toPromise().then((msg) => this.transValorRecomendado = msg);
-
   }
   
   /**
@@ -155,4 +156,45 @@ export class ObjetivoGeralPage {
       ]
     }).present();   
   }
+
+  /**
+   * Permite editar uma transação
+   * @param transacao 
+   */
+  editar(transacao: Transacao) {
+
+      this.alertCtrl.create({
+          enableBackdropDismiss: false,
+          title: this.transEditarTransacao,
+          inputs: [
+            {name: 'valor', type:'number',  placeholder: this.transValorTransacao, value: transacao.valor.toString()},
+            {name: 'data', type:'date', value: transacao.data},
+            {name: 'categoria', type:'text', placeholder:this.transCategoriaInfo, value: transacao.categoria}
+          ], 
+          buttons:[
+            {text: this.transBtnCancelar, role: 'cancel'},
+            {text: this.transBtnOk, handler: (data) => {
+
+              if (data.valor == "" ||data.valor == undefined ) {
+                this.translate.get("AMOUNT_REQUIRED").toPromise().then((msg) => { this.chamarAlerta(msg) });
+                return;
+              }
+          
+              if (data.data == "" ||data.data == undefined ) {
+                this.translate.get("DATE_REQUIRED").toPromise().then((msg) => { this.chamarAlerta(msg) });
+                return;
+              }
+
+              //Cria meta
+              transacao.valor = Number(data.valor);
+              transacao.data = data.data;
+              transacao.categoria = data.categoria;
+              console.log(transacao);
+              let index = this.meta.transacoes.map((t) => t.id).indexOf(transacao.id);
+              this.meta.transacoes[index] = (transacao);
+              this.atualizaMeta();
+            }}
+          ] 
+        }).present();
+   }
 }

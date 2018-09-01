@@ -36,6 +36,10 @@
 
           <!-- OPCÕES -->
           <ion-item-options side="right" *ngIf="metasUsuario.usuario == usuario">
+            <button ion-button color="secondary" (click)="editar(transacao)">
+              <ion-icon name="paper"></ion-icon>
+              {{ 'EDIT' | translate }}
+            </button>
             <button ion-button color="danger" (click)="remover(transacao)">
               <ion-icon name="trash"></ion-icon>
               {{ 'REMOVE' | translate }}
