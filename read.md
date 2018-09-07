@@ -1,7 +1,6 @@
 # Minhas Metas Financeiras
 
-## Verão 0.4.0
+## Verão 0.4.1
 
 Melhorias:
-    - Ordernar transações em ordem decrescente
-    - Adicionado opção de editar transação 
+    - Por padrão ja escolhe o idioma do celular da pessoa

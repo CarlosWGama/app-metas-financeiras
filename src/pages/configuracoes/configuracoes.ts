@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 import { Storage } from '@ionic/storage';
 import { LoginValidation } from '../LoginValidation';
+import { AppConfig } from '../../models/AppConfig';
 
 declare var firebase;
 /**
@@ -16,6 +17,7 @@ declare var firebase;
 export class ConfiguracoesPage extends LoginValidation {
 
   idioma: string = 'en';
+  idiomas = AppConfig.IDIOMAS_DISPONIVEIS;
 
   logadoEmailSenha:boolean = false;
   senha: string = '';

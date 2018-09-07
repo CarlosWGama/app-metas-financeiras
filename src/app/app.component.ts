@@ -44,9 +44,19 @@ export class MyApp {
 
     //Escolhe o idioma
     this.storage.get('idioma').then((val) => {
-      if (val == null)
-        this.translate.setDefaultLang('en');
-      else
+      if (val == null) {
+        let idioma = 'en';
+        if (window.navigator.language != "undefined") {
+          idioma = window.navigator.language;  
+          idioma = idioma.split("-", 1)[0];
+          //Não está nas disponiveis
+          if (AppConfig.IDIOMAS_DISPONIVEIS.map((id) => id.sigla).indexOf(idioma) === -1) 
+            idioma = 'en'; 
+        }
+        console.log("Idioma padrão: " + idioma);
+        this.translate.setDefaultLang(idioma);
+      } else
+        if(val == 'pt-BR') val = 'pt'; //Ajustes
         this.translate.setDefaultLang(val);
     });
 
