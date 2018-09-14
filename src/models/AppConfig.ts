@@ -4,7 +4,7 @@
  */
 export class AppConfig {
 
-    static readonly VERSAO: string = '0.4.0';
+    static readonly VERSAO: string = '1.0.0';
 
     static readonly IDIOMAS_DISPONIVEIS: {lingua:string, sigla: string}[] = [
         {lingua: 'English', sigla: 'en'},
