@@ -22,6 +22,7 @@ import { MetaProvider } from '../providers/meta/meta';
 import { AdMobFree } from '@ionic-native/admob-free';
 import { AjudaPageModule } from '../pages/ajuda/ajuda.module';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { FCM } from '@ionic-native/fcm';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     UsuarioProvider,
     MetaProvider,
     AdMobFree,
-    GooglePlus
+    GooglePlus,
+    FCM
   ]
 })
 export class AppModule {}

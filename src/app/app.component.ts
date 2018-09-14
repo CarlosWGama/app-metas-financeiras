@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { Storage } from '@ionic/storage';
 
-
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ConfiguracoesPage } from '../pages/configuracoes/configuracoes';
@@ -37,7 +36,7 @@ export class MyApp {
 
   email: string = "";
 
-  constructor(platform: Platform, statusBar: StatusBar, 
+  constructor(private platform: Platform, statusBar: StatusBar, 
     splashScreen: SplashScreen, screenOrientation: ScreenOrientation, 
     private translate: TranslateService, private storage: Storage, private events: Events,
     private googlePlus: GooglePlus, private usuarioProvider: UsuarioProvider) {
@@ -48,16 +47,17 @@ export class MyApp {
         let idioma = 'en';
         if (window.navigator.language != "undefined") {
           idioma = window.navigator.language;  
-          idioma = idioma.split("-", 1)[0];
+          idioma = idioma.split("-")[0];
           //Não está nas disponiveis
           if (AppConfig.IDIOMAS_DISPONIVEIS.map((id) => id.sigla).indexOf(idioma) === -1) 
             idioma = 'en'; 
         }
         console.log("Idioma padrão: " + idioma);
         this.translate.setDefaultLang(idioma);
-      } else
-        if(val == 'pt-BR') val = 'pt'; //Ajustes
-        this.translate.setDefaultLang(val);
+      } else {
+          if(val == 'pt-BR') val = 'pt'; //Ajustes
+          this.translate.setDefaultLang(val);
+        }
     });
 
     //Se o usuário tiver logado vai para a Home Pagase
@@ -66,6 +66,10 @@ export class MyApp {
         this.nav.setRoot(HomePage);
         this.email = firebase.auth().currentUser.email;
         this.usuarioProvider.cadastrar(firebase.auth().currentUser.uid, firebase.auth().currentUser.email);
+
+        if (!this.platform.is('core') && !this.platform.is('mobileweb'))
+          this.usuarioProvider.atualizarDevideToken(firebase.auth().currentUser.uid);  
+
       } else 
         this.nav.setRoot(LoginPage);
     });
@@ -84,8 +88,11 @@ export class MyApp {
     });
 
     //Atualiza o login o email sempre que houver um login
-    this.events.subscribe("login", (email) => {
+    this.events.subscribe("login", (email, uid) => {
       this.email = email;
+
+      if (!this.platform.is('core') && !this.platform.is('mobileweb'))
+          this.usuarioProvider.atualizarDevideToken(firebase.auth().currentUser.uid);  
     });
   }
 

@@ -143,6 +143,6 @@ export class LoginPage extends LoginValidation {
    * Envia para o app.component o email atualizado do usuário
    */
   private atualizarEmailMenu() {
-    this.events.publish("login", firebase.auth().currentUser.email);
+    this.events.publish("login", firebase.auth().currentUser.email, firebase.auth().currentUser.uid);
   }
 }

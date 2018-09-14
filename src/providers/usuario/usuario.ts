@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/Usuario';
+import { FCM } from '@ionic-native/fcm';
 
 declare var firebase;
 
@@ -12,7 +13,7 @@ export class UsuarioProvider {
 
   private ref;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, private fcm: FCM) {
     this.ref = firebase.database().ref('usuarios');
   }
 
@@ -52,6 +53,17 @@ export class UsuarioProvider {
       }
         
       return null;
+    });
+  }
+
+  /**
+   * Atualiza o token do usuário
+   * @param uid 
+   * @param token 
+   */
+  public atualizarDevideToken(uid: string) {
+    this.fcm.getToken().then(token => {
+      this.ref.child(uid).child('device_token').set(token);
     });
   }
 
