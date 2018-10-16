@@ -23,11 +23,10 @@ export class UsuarioProvider {
    * @param email 
    */
   public cadastrar(uid: string, email: string) {
-    this.ref.child(uid).set({
-      "uid": uid,
-      'email':  email,
-      'cadastro': new Date().toISOString().slice(0, 10)
-    });
+    //Nesse modelo para não perder dados antigos
+    this.ref.child(uid).child('uid').set(uid);
+    this.ref.child(uid).child('email').set(email);
+    this.ref.child(uid).child('cadastro').set(new Date().toISOString().slice(0, 10));
   }
 
   /**

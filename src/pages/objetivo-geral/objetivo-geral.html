@@ -8,9 +8,14 @@
   <!-- RESUMO -->
   <div id="resumo">
       <h2>{{meta.titulo}}</h2>
-      <h4>{{ 'GOAL' | translate }}: {{meta.objetivo  | dinheiro}}</h4>
+      <h4>
+          {{ 'GOAL' | translate }}: {{meta.objetivo  | dinheiro}}
+      </h4>
       <h4>{{ 'CURRENT' | translate }}: {{ meta.acumulado | dinheiro }} ({{  ((meta.acumulado * 100)/meta.objetivo).toFixed(2) }}%)</h4>      
-  </div>
+      <h4 *ngIf="meta.temPrazo">
+        {{ 'NEXT_DEPOSIT_RECOMMENDATION' | translate }} ${{meta.valorRecomendado | dinheiro }}
+      </h4>
+    </div>
   <!-- [FIM] RESUMO -->
 
   <ion-list>

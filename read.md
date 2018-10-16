@@ -1,6 +1,7 @@
 # Minhas Metas Financeiras
 
-## Verão 0.4.1
+## Verão 1.0.1
 
 Melhorias:
-    - Por padrão ja escolhe o idioma do celular da pessoa
+    - Ajuste para Web
+    - Recomendações
