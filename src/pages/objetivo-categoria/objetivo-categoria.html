@@ -5,6 +5,10 @@
   </ion-header>
 
 <ion-content>
+
+  <div id="grafico">
+    <canvas #categoriasGrafico width="100" height="100"></canvas>
+  </div>
   <ion-list>
     <ion-item *ngFor="let cat of meta.categorias ">
       <h2>{{ cat.categoria }} </h2>

@@ -70,7 +70,7 @@ export class Meta {
            
                 //ordernar 
                 transacoes[index].transacoes.sort((a, b) => {
-                    return a.valor - b.valor;
+                    return (a.data > b.data ? -1 : 1);
                 });
             }
         });  

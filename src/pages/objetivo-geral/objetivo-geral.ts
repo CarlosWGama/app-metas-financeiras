@@ -46,6 +46,7 @@ export class ObjetivoGeralPage {
     this.events.subscribe("meta:inicia", (meta) => {
       this.meta.initialize(meta);
       console.log("Meta iniciada em Objetivo Geral");
+
     });
     console.log('ionViewDidLoad ObjetivoGeralPage');
 
@@ -62,7 +63,7 @@ export class ObjetivoGeralPage {
     this.translate.get("REMOVE_TRANSACTION").toPromise().then((msg) => this.transMsgRemoverTransacao = msg);
     this.translate.get("NEXT_DEPOSIT_RECOMMENDATION").toPromise().then((msg) => this.transValorRecomendado = msg);
   }
-  
+
   /**
    * Adiciona uma nova transação a meta atual
    */

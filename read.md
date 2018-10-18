@@ -1,7 +1,7 @@
 # Minhas Metas Financeiras
 
-## Verão 1.0.1
+## Verão 1.1.0
 
 Melhorias:
-    - Ajuste para Web
-    - Recomendações
+    - Adicionado gráfico
+    - Exibindo transação pela data
