@@ -43,7 +43,7 @@
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-fcm-with-dependecy-updated": "^2.2.4",
     "cordova-plugin-googleplus": "^5.1.1",
-    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-inappbrowser": "^3.1.0",
     "cordova-plugin-ionic-keyboard": "^2.1.2",
     "cordova-plugin-ionic-webview": "^2.0.3",
     "cordova-plugin-screen-orientation": "^3.0.1",
